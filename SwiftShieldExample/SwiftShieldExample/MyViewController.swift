@@ -27,6 +27,7 @@ class MyViewController: UIViewController {
 //        myProp = myLet * 10
 //        MyViewController.myStaticVar = MyViewController.myClassVar + MyViewController.myStaticLet * 5
         render()
+        view.backgroundColor = .white
     }
 
     func render() {
