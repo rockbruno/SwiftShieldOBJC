@@ -36,11 +36,6 @@
                                             [SSDSourceKitUID compilerArgsId].uid,
                                             compilerArgsArgument);
 
-//    char* utf8Str = sourcekitd_request_description_copy(requestDictionary);
-//    NSString* result = [[NSString alloc] initWithCString:utf8Str encoding:NSUTF8StringEncoding];
-//    NSLog(@"%@", result);
-//    free(utf8Str);
-
     sourcekitd_response_t responseObject = sourcekitd_send_request_sync(requestDictionary);
     SSDSourceKitResponse* response = [[SSDSourceKitResponse alloc] initWithSourceKitResponse:responseObject];
 
