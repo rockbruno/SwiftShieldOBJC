@@ -5,12 +5,12 @@
 #import "SSDFile.h"
 
 @interface SSDXcodeOutputParser ()
-@property (nonatomic) SSDLoggerProtocol logger;
+@property (nonatomic) id<SSDLoggerProtocol> logger;
 @end
 
 @implementation SSDXcodeOutputParser
 
-- (instancetype)initWithLogger:(SSDLoggerProtocol)logger {
+- (instancetype)initWithLogger:(id<SSDLoggerProtocol>)logger {
     self = [super init];
     if (self) {
         _logger = logger;

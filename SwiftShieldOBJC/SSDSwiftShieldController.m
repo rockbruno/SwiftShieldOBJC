@@ -4,18 +4,15 @@
 #import "SSDSwiftShieldInteractor.h"
 #import "SSDLoggerProtocol.h"
 
-@interface SSDSwiftShieldController (InteractorDelegate) <SSDSwiftShieldInteractorDelegate>
-@end
-
 @interface SSDSwiftShieldController ()
-@property (nonatomic) SSDSwiftShieldInteractor* interactor;
-@property (nonatomic) SSDLoggerProtocol logger;
+@property (nonatomic) id<SSDSwiftShieldInteractorProtocol> interactor;
+@property (nonatomic) id<SSDLoggerProtocol> logger;
 @end
 
 @implementation SSDSwiftShieldController
 
-- (instancetype)initWithInterator:(SSDSwiftShieldInteractor*)interactor
-                           logger:(SSDLoggerProtocol)logger
+- (instancetype)initWithInterator:(id<SSDSwiftShieldInteractorProtocol>)interactor
+                           logger:(id<SSDLoggerProtocol>)logger
 {
     self = [super init];
     if (self) {
@@ -34,25 +31,25 @@
 @end
 
 @implementation SSDSwiftShieldController (InteractorDelegate)
-- (void)interactor:(nonnull SSDSwiftShieldInteractor *)interactor failedToRetrieveModulesWithError:(nonnull NSError *)error {
+- (void)interactor:(id<SSDSwiftShieldInteractorProtocol>)interactor failedToRetrieveModulesWithError:(nonnull NSError *)error {
     [self.logger log:error.localizedDescription];
     self.didFailToRun = YES;
 }
 
-- (void)interactor:(nonnull SSDSwiftShieldInteractor *)interactor retrievedModules:(nonnull NSArray<SSDModule *> *)modules {
+- (void)interactor:(id<SSDSwiftShieldInteractorProtocol>)interactor retrievedModules:(nonnull NSArray<SSDModule *> *)modules {
     [self.logger log:@"Finding references of USRs"];
     [self.interactor obfuscateModules:modules];
 }
 
-- (void)interactor:(nonnull SSDSwiftShieldInteractor *)interactor failedToObfuscateWithError:(nonnull NSError *)error {
+- (void)interactor:(id<SSDSwiftShieldInteractorProtocol>)interactor failedToObfuscateWithError:(nonnull NSError *)error {
     [self.logger log:error.localizedDescription];
     self.didFailToRun = YES;
 }
 
-- (BOOL)interactor:(nonnull SSDSwiftShieldInteractor *)interactor didObfuscate:(nonnull SSDFile *)file newContents:(nonnull NSString *)newContents {
+- (BOOL)interactor:(id<SSDSwiftShieldInteractorProtocol>)interactor didObfuscate:(nonnull SSDFile *)file newContents:(nonnull NSString *)newContents {
     NSError* error;
     [self.logger log:[NSString stringWithFormat:@"Overwriting %@", file.name]];
-//    [file writeContents:newContents error:&error];
+    [file writeContents:newContents error:&error];
     if (error) {
         [self.logger log:error.localizedDescription];
         self.didFailToRun = YES;

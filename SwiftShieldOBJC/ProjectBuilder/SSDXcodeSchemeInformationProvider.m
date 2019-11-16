@@ -9,7 +9,7 @@
 @property (nonatomic) SSDFile* projectFile;
 @property (nonatomic) NSString* schemeName;
 @property (nonatomic) SSDXcodeOutputParser* outputParser;
-@property (nonatomic) SSDLoggerProtocol logger;
+@property (nonatomic) id<SSDLoggerProtocol> logger;
 @end
 
 @implementation SSDXcodeSchemeInformationProvider
@@ -17,7 +17,7 @@
 - (instancetype)initWithProjectFile:(SSDFile*)projectFile
                          schemeName:(NSString* )schemeName
                   buildOutputParser:(SSDXcodeOutputParser*)outputParser
-                             logger:(SSDLoggerProtocol)logger {
+                             logger:(id<SSDLoggerProtocol>)logger {
     self = [super init];
     if (self) {
         _projectFile = projectFile;

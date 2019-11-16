@@ -6,10 +6,10 @@ NS_ASSUME_NONNULL_BEGIN
 @class SSDFile;
 @protocol SSDObfuscatorDelegate;
 
-/// An `SSDObfuscator` abstracts the process of obfuscating files from a module.
+/// An `SSDObfuscatorProtocol` abstracts the process of obfuscating files from a module.
 /// Modules are registered to the obfuscator, which can be used to pre-process information inside the obfuscator.
 /// After all modules were registered, the `SSDObfuscator` can start sending events to the assigned delegate.
-@protocol SSDObfuscator
+@protocol SSDObfuscatorProtocol
 
 @property (weak, nonatomic) id<SSDObfuscatorDelegate> delegate;
 
@@ -26,8 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-typedef id<SSDObfuscator> SSDObfuscatorProtocol;
-
 /// A delegate that receives events from a `SSDObfuscator`.
 @protocol SSDObfuscatorDelegate
 /// Delegate method called when a file was successfully obfuscated.
@@ -37,7 +35,7 @@ typedef id<SSDObfuscator> SSDObfuscatorProtocol;
 ///   - file: The file that was obfuscated.
 ///   - newContent: The obfuscated contents of the file.
 /// - Returns: A boolean indicating if the obfuscation process should stop, for example if saving the file fails.
-- (BOOL)obfuscator:(SSDObfuscatorProtocol)obfuscator
+- (BOOL)obfuscator:(id<SSDObfuscatorProtocol>)obfuscator
   didObfuscateFile:(SSDFile*)file
         newContent:(NSString*)newContent;
 
@@ -48,7 +46,7 @@ typedef id<SSDObfuscator> SSDObfuscatorProtocol;
 ///   - obfuscator: The obfuscator.
 ///   - file: The file that failed to be obfuscated.
 ///   - error: The thrown error.
-- (void)obfuscator:(SSDObfuscatorProtocol)obfuscator
+- (void)obfuscator:(id<SSDObfuscatorProtocol>)obfuscator
 didFailToObfuscateFile:(SSDFile*)file
              withError:(NSError*)error;
 @end

@@ -3,7 +3,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /// A protocol that receives log messages and processes error messages for the user.
-@protocol SSDLogger
+@protocol SSDLoggerProtocol
 
 /// Logs a message.
 ///
@@ -17,7 +17,5 @@ NS_ASSUME_NONNULL_BEGIN
 ///   - message: The message to return the error from.
 - (NSError*)fatalErrorFor:(NSString*)message;
 @end
-
-typedef id<SSDLogger> SSDLoggerProtocol;
 
 NS_ASSUME_NONNULL_END

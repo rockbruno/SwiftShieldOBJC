@@ -9,9 +9,9 @@ NS_ASSUME_NONNULL_BEGIN
 @class SSDReference;
 
 /// A `SSDObfuscator` that uses SourceKit to obfuscate modules.
-@interface SSDSourceKitObfuscator: NSObject <SSDObfuscator>
+@interface SSDSourceKitObfuscator: NSObject <SSDObfuscatorProtocol>
 - (instancetype)initWithSourceKit:(SSDSourceKit*)sourceKit
-                           logger:(SSDLoggerProtocol)logger
+                           logger:(id<SSDLoggerProtocol>)logger
                         dataStore:(SSDSourceKitObfuscatorDataStore*)dataStore;
 
 /// Removes arguments from a SourceKit name string.

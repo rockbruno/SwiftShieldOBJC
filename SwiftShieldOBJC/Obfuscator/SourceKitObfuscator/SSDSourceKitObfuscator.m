@@ -10,7 +10,7 @@
 
 @interface SSDSourceKitObfuscator ()
 @property (nonatomic) SSDSourceKit* sourceKit;
-@property (nonatomic) SSDLoggerProtocol logger;
+@property (nonatomic) id<SSDLoggerProtocol> logger;
 @property (nonatomic) SSDSourceKitObfuscatorDataStore* dataStore;
 @end
 
@@ -19,7 +19,7 @@
 @synthesize delegate;
 
 - (instancetype)initWithSourceKit:(SSDSourceKit*)sourceKit
-                           logger:(SSDLoggerProtocol)logger
+                           logger:(id<SSDLoggerProtocol>)logger
                         dataStore:(SSDSourceKitObfuscatorDataStore*)dataStore {
     self = [super init];
     if (self) {

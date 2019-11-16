@@ -8,14 +8,28 @@ NS_ASSUME_NONNULL_BEGIN
 @class SSDModule;
 @protocol SSDSwiftShieldInteractorDelegate;
 
-/// Coordinates requests sent from a SwiftShield controller to obfuscation worker classes.
-@interface SSDSwiftShieldInteractor: NSObject
+@protocol SSDSwiftShieldInteractorProtocol
 
 @property (weak, nonatomic) id<SSDSwiftShieldInteractorDelegate> delegate;
 
+/// Retrieves .pbxproj targets from the relevant Xcode project.
+/// After the interactor finishes retrieving the modules, the result is sent via the delegate.
+- (void)getModulesFromProject;
+
+/// Starts the obfuscation process for a set of modules.
+/// During the obfuscation process, the status each individual file is sent to the delegate.
+///
+/// - Parameters:
+///   - modules: The modules to obfuscate.
+- (void)obfuscateModules:(NSArray<SSDModule*>*)modules;
+@end
+
+/// Coordinates requests sent from a SwiftShield controller to obfuscation worker classes.
+@interface SSDSwiftShieldInteractor: NSObject <SSDSwiftShieldInteractorProtocol>
+
 - (instancetype)initWithSchemeInformationProvider:(SSDXcodeSchemeInformationProvider*)schemeInformationProvider
-                                           logger:(SSDLoggerProtocol)logger
-                                        obfuscator:(SSDObfuscatorProtocol)obfuscator;
+                                           logger:(id<SSDLoggerProtocol>)logger
+                                        obfuscator:(id<SSDObfuscatorProtocol>)obfuscator;
 
 /// Retrieves .pbxproj targets from the relevant Xcode project.
 /// After the interactor finishes retrieving the modules, the result is sent via the delegate.
@@ -35,20 +49,20 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// - Parameters:
 ///   - error: The thrown error.
-- (void)interactor:(SSDSwiftShieldInteractor*)interactor failedToRetrieveModulesWithError:(NSError*)error;
+- (void)interactor:(id<SSDSwiftShieldInteractorProtocol>)interactor failedToRetrieveModulesWithError:(NSError*)error;
 
 /// A delegate method called when targets were successfully retrieved from Xcode.
 ///
 /// - Parameters:
 ///   - modules: The retrieved modules.
-- (void)interactor:(SSDSwiftShieldInteractor*)interactor retrievedModules:(NSArray<SSDModule*>*)modules;
+- (void)interactor:(id<SSDSwiftShieldInteractorProtocol>)interactor retrievedModules:(NSArray<SSDModule*>*)modules;
 
 /// A delegate method that indicates that obfuscating a file failed.
 /// When a file fails to obfuscate, the entire obfuscation process is halted.
 ///
 /// - Parameters:
 ///   - error: The thrown error.
-- (void)interactor:(SSDSwiftShieldInteractor*)interactor failedToObfuscateWithError:(NSError*)error;
+- (void)interactor:(id<SSDSwiftShieldInteractorProtocol>)interactor failedToObfuscateWithError:(NSError*)error;
 
 /// A delegate method called when a file's contents are successfully obfuscated.
 ///
@@ -56,7 +70,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///   - file: The obfuscated file.
 ///   - newContents: The new obfuscated contents of the file.
 /// - Returns: A boolean indicating if the obfuscation process should stop, for example if saving the file fails.
-- (BOOL)interactor:(SSDSwiftShieldInteractor*)interactor
+- (BOOL)interactor:(id<SSDSwiftShieldInteractorProtocol>)interactor
       didObfuscate:(SSDFile*)file
        newContents:(NSString*)newContents;
 @end

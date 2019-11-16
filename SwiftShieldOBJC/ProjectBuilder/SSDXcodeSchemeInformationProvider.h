@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithProjectFile:(SSDFile*)projectFile
                          schemeName:(NSString* )schemeName
                   buildOutputParser:(SSDXcodeOutputParser*)outputParser
-                             logger:(SSDLoggerProtocol)logger;
+                             logger:(id<SSDLoggerProtocol>)logger;
 
 /// Retrieves .pbxproj targets from the relevant Xcode project by building it.
 ///
