@@ -131,12 +131,24 @@
 			isa = PBXGroup;
 			children = (
 				FD3B4C1A2380651D009CFF5B /* SSDObfuscatorProtocol.h */,
-				FD3B4C1E23806601009CFF5B /* SSDSourceKitObfuscator.h */,
+				FD3B4E6123808C83009CFF5B /* SourceKitObfuscator */,
 				FD3B4C21238067F5009CFF5B /* SSDSourceKitObfuscatorDataStore.h */,
 				FD3B4C22238067F5009CFF5B /* SSDSourceKitObfuscatorDataStore.m */,
-				FD3B4C1F23806601009CFF5B /* SSDSourceKitObfuscator.m */,
 			);
 			path = Obfuscator;
+			sourceTree = "<group>";
+		};
+		FD3B4E6123808C83009CFF5B /* SourceKitObfuscator */ = {
+			isa = PBXGroup;
+			children = (
+				FD3B4C1E23806601009CFF5B /* SSDSourceKitObfuscator.h */,
+				FD3B4C1F23806601009CFF5B /* SSDSourceKitObfuscator.m */,
+				FDE51207237F98E600751E40 /* SSDIndexedFile.h */,
+				FDE51208237F98E600751E40 /* SSDIndexedFile.m */,
+				FD3B4C0C23801180009CFF5B /* SSDReference.h */,
+				FD3B4C0D23801180009CFF5B /* SSDReference.m */,
+			);
+			path = SourceKitObfuscator;
 			sourceTree = "<group>";
 		};
 		FDE51183237F2C1F00751E40 = {
@@ -163,10 +175,10 @@
 				FDE5118F237F2C1F00751E40 /* main.m */,
 				FDE511F4237F646C00751E40 /* SourceKit */,
 				FDE511F1237F5CB300751E40 /* SSDSwiftShieldController.h */,
+				FDE511F2237F5CB300751E40 /* SSDSwiftShieldController.m */,
 				FD3B4C3023807ABD009CFF5B /* SSDSwiftShieldInteractor.h */,
 				FD3B4C3123807ABD009CFF5B /* SSDSwiftShieldInteractor.m */,
 				FD3B4C1D23806529009CFF5B /* Obfuscator */,
-				FDE511F2237F5CB300751E40 /* SSDSwiftShieldController.m */,
 				FDE511EF237F5C9000751E40 /* Logger */,
 				FDE511EE237F5C8000751E40 /* Models */,
 				FDE511F0237F5C9F00751E40 /* Helpers */,
@@ -212,10 +224,6 @@
 		FDE511EE237F5C8000751E40 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FDE51207237F98E600751E40 /* SSDIndexedFile.h */,
-				FDE51208237F98E600751E40 /* SSDIndexedFile.m */,
-				FD3B4C0C23801180009CFF5B /* SSDReference.h */,
-				FD3B4C0D23801180009CFF5B /* SSDReference.m */,
 				FDE511B7237F2D6C00751E40 /* SSDModule.h */,
 				FDE511BA237F2E4A00751E40 /* SSDFile.h */,
 				FDE511BB237F2E4A00751E40 /* SSDFile.m */,

@@ -71,29 +71,6 @@
     }
 }
 
-- (NSString*)obfuscatedStringForString:(NSString*)string {
-    NSString* cachedResult = self.dataStore.obfuscatedNames[string];
-    if (cachedResult) {
-        return cachedResult;
-    } else {
-        NSInteger obfuscatedNameSize = 32;
-        NSString* letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        NSString* numbers = @"0123456789";
-        NSString* lettersAndNumbers = [letters stringByAppendingString:numbers];
-        NSMutableString* newString = [NSMutableString new];
-        for (int i = 0; i < obfuscatedNameSize; i++) {
-            NSString* pool = i == 0 ? letters : lettersAndNumbers;
-            uint32_t poolSize = (uint32_t)[pool length];
-            NSInteger index = arc4random_uniform(poolSize);
-            NSString* base = i == 0 ? letters : lettersAndNumbers;
-            unichar character = [base characterAtIndex:index];
-            [newString appendString:[NSString stringWithFormat: @"%C", character]];
-        }
-        self.dataStore.obfuscatedNames[string] = newString;
-        return newString;
-    }
-}
-
 - (NSString*)removeParameterInformationFromString:(NSString*)string {
     return [[string componentsSeparatedByString:@"("] firstObject];
 }
@@ -243,6 +220,29 @@
         [finalString appendString:obj];
     }];
     return finalString;
+}
+
+- (NSString*)obfuscatedStringForString:(NSString*)string {
+    NSString* cachedResult = self.dataStore.obfuscatedNames[string];
+    if (cachedResult) {
+        return cachedResult;
+    } else {
+        NSInteger obfuscatedNameSize = 32;
+        NSString* letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        NSString* numbers = @"0123456789";
+        NSString* lettersAndNumbers = [letters stringByAppendingString:numbers];
+        NSMutableString* newString = [NSMutableString new];
+        for (int i = 0; i < obfuscatedNameSize; i++) {
+            NSString* pool = i == 0 ? letters : lettersAndNumbers;
+            uint32_t poolSize = (uint32_t)[pool length];
+            NSInteger index = arc4random_uniform(poolSize);
+            NSString* base = i == 0 ? letters : lettersAndNumbers;
+            unichar character = [base characterAtIndex:index];
+            [newString appendString:[NSString stringWithFormat: @"%C", character]];
+        }
+        self.dataStore.obfuscatedNames[string] = newString;
+        return newString;
+    }
 }
 
 @end

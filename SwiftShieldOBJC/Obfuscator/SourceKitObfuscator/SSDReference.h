@@ -2,6 +2,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// The representation of a symbol reference in a Swift file.
 @interface SSDReference : NSObject
 @property (readonly, nonatomic) NSString* name;
 @property (readonly, nonatomic) NSInteger line;
@@ -10,7 +11,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithName:(NSString*)name
                         line:(NSInteger)line 
                       column:(NSInteger)column;
-- (NSComparisonResult)compare:(SSDReference*)otherObject;
 @end
 
 NS_ASSUME_NONNULL_END

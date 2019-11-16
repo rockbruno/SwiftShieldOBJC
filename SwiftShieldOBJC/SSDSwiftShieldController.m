@@ -51,7 +51,7 @@
 
 - (BOOL)interactor:(nonnull SSDSwiftShieldInteractor *)interactor didObfuscate:(nonnull SSDFile *)file newContents:(nonnull NSString *)newContents {
     NSError* error;
-    [self.logger log:[NSString stringWithFormat:@"Overwritting %@", file.name]];
+    [self.logger log:[NSString stringWithFormat:@"Overwriting %@", file.name]];
 //    [file writeContents:newContents error:&error];
     if (error) {
         [self.logger log:error.localizedDescription];
