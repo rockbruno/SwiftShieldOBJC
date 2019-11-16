@@ -7,6 +7,7 @@
 #import "SSDFile.h"
 #import "SSDIndexedFile.h"
 #import "SSDReference.h"
+#import "SSDObfuscatorDelegateSpy.h"
 
 @interface SSDSourceKitObfuscatorTests: XCTestCase
 @end
@@ -18,6 +19,49 @@
     return [directory stringByAppendingString:name];
 }
 
+- (NSArray*)sourceKitCompilerArgumentsForMockModule:(NSString*)sourceFilePath {
+    return @[@"-module-name",
+             @"MockModule",
+             @"-Onone",
+             @"-enable-batch-mode",
+             @"-enforce-exclusivity=checked",
+             @"-DDEBUG",
+             @"-D",
+             @"COCOAPODS",
+             @"-suppress-warnings",
+             @"-sdk",
+             @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.1.sdk",
+             @"-target",
+             @"armv7-apple-ios8.0",
+             @"-g",
+             @"-Xfrontend",
+             @"-serialize-debugging-options",
+             @"-embed-bitcode-marker",
+             @"-enable-testing",
+             @"-swift-version",
+             @"4",
+             @"-c",
+             @"-j12",
+             sourceFilePath,
+             @"-Xcc",
+             @"-iquote",
+             @"-Xcc",
+             @"-ivfsoverlay",
+             @"-Xcc",
+             @"-iquote",
+             @"-Xcc",
+             @"-DPOD_CONFIGURATION_DEBUG=1",
+             @"-Xcc",
+             @"-DDEBUG=1",
+             @"-Xcc",
+             @"-DCOCOAPODS=1",
+             @"-import-underlying-module",
+             @"-Xcc",
+             @"-ivfsoverlay",
+             @"-D",
+             @"DEBUG"];
+}
+
 - (void)test_moduleRegistration {
     SSDSourceKit* sourceKit = [SSDSourceKit new];
     [sourceKit start];
@@ -27,28 +71,21 @@
                                                                                     logger:[SSDDummyLogger new]
                                                                                  dataStore:dataStore];
 
-    NSString* mockPath = @"/Users/bruno.rocha/Desktop/bla.swift";//[self temporaryFilePathForFile:@"moduleRegistration.swift"];
+    NSString* mockPath = [self temporaryFilePathForFile:@"moduleRegistration.swift"];
     SSDFile* mockFile = [[SSDFile alloc] initWithPath:mockPath];
-//    [mockFile writeContents:@"class Foo {}" error:nil];
+    [mockFile writeContents:@"class Foo {}" error:nil];
 
+    NSArray* args = [self sourceKitCompilerArgumentsForMockModule:mockPath];
     SSDModule* mockModule = [[SSDModule alloc] initWithName:@"MockModule"
                                                 sourceFiles:@[mockFile]
-                                          compilerArguments:@[@"-module-name",
-                                                              @"MockModule",
-                                                              @"-Onone",
-                                                              @"-sdk",
-                                                             @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.1.sdk",
-                                                              @"-swift-version",
-                                                              @"4",
-                                                              @"-c",
-                                                              @"-j12",
-                                                              mockPath]];
+                                          compilerArguments:args];
 
     [obfuscator registerModuleForObfuscation:mockModule];
 
-    XCTAssertEqualObjects(dataStore.processedUsrs, @[]);
-    XCTAssertEqualObjects(dataStore.indexedFiles.firstObject.file, mockFile);
+    NSSet* expectedSet = [[NSSet alloc] initWithArray:@[@"s:10MockModule3FooC"]];
 
+    XCTAssertEqualObjects(dataStore.processedUsrs, expectedSet);
+    XCTAssertEqualObjects(dataStore.indexedFiles.firstObject.file, mockFile);
 }
 
 - (void)test_removeParameterInformationFromString {
@@ -62,6 +99,67 @@
 
     NSString* propertyName = @"barProp";
     XCTAssertEqualObjects([obfuscator removeParameterInformationFromString:propertyName], @"barProp");
+}
+
+- (void)test_obfuscation_sendsCorrectObfuscatedContentToDelegate {
+
+    SSDSourceKit* sourceKit = [SSDSourceKit new];
+    [sourceKit start];
+    SSDSourceKitObfuscatorDataStore* dataStore = [SSDSourceKitObfuscatorDataStore new];
+
+    SSDSourceKitObfuscator* obfuscator = [[SSDSourceKitObfuscator alloc] initWithSourceKit:sourceKit
+                                                                                    logger:[SSDDummyLogger new]
+                                                                                 dataStore:dataStore];
+
+    SSDObfuscatorDelegateSpy* delegateSpy = [SSDObfuscatorDelegateSpy new];
+    obfuscator.delegate = delegateSpy;
+
+    NSString* mockPath = [self temporaryFilePathForFile:@"moduleRegistration.swift"];
+    SSDFile* mockFile = [[SSDFile alloc] initWithPath:mockPath];
+    [mockFile writeContents:@"class Foo { func bar() {} }" error:nil];
+
+    NSArray* args = [self sourceKitCompilerArgumentsForMockModule:mockPath];
+    SSDModule* mockModule = [[SSDModule alloc] initWithName:@"MockModule"
+                                                sourceFiles:@[mockFile]
+                                          compilerArguments:args];
+
+    dataStore.obfuscatedNames[@"Foo"] = @"OBSFoo";
+    dataStore.obfuscatedNames[@"bar"] = @"OBSBar";
+
+    [obfuscator registerModuleForObfuscation:mockModule];
+    [obfuscator obfuscate];
+
+    XCTAssertEqualObjects(delegateSpy.receivedNewContent, @"class OBSFoo { func OBSBar() {} }");
+}
+
+- (void)test_obfuscation_ignoresInternalCode {
+
+    SSDSourceKit* sourceKit = [SSDSourceKit new];
+    [sourceKit start];
+    SSDSourceKitObfuscatorDataStore* dataStore = [SSDSourceKitObfuscatorDataStore new];
+
+    SSDSourceKitObfuscator* obfuscator = [[SSDSourceKitObfuscator alloc] initWithSourceKit:sourceKit
+                                                                                    logger:[SSDDummyLogger new]
+                                                                                 dataStore:dataStore];
+
+    SSDObfuscatorDelegateSpy* delegateSpy = [SSDObfuscatorDelegateSpy new];
+    obfuscator.delegate = delegateSpy;
+
+    NSString* mockPath = [self temporaryFilePathForFile:@"moduleRegistration.swift"];
+    SSDFile* mockFile = [[SSDFile alloc] initWithPath:mockPath];
+    [mockFile writeContents:@"import UIKit; class Foo: UIViewController { func viewDidLoad() {} }" error:nil];
+
+    NSArray* args = [self sourceKitCompilerArgumentsForMockModule:mockPath];
+    SSDModule* mockModule = [[SSDModule alloc] initWithName:@"MockModule"
+                                                sourceFiles:@[mockFile]
+                                          compilerArguments:args];
+
+    dataStore.obfuscatedNames[@"Foo"] = @"OBSFoo";
+
+    [obfuscator registerModuleForObfuscation:mockModule];
+    [obfuscator obfuscate];
+
+    XCTAssertEqualObjects(delegateSpy.receivedNewContent, @"import UIKit; class OBSFoo: UIViewController { func viewDidLoad() {} }");
 }
 
 - (void)test_obfuscatedString_cachesSimilarStrings {

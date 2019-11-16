@@ -25,6 +25,7 @@
 		FD3B4E642380912F009CFF5B /* SSDSwiftShieldControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3B4E632380912F009CFF5B /* SSDSwiftShieldControllerTests.m */; };
 		FD3B4E67238091C1009CFF5B /* SSDSwiftShieldInteractorSpy.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3B4E66238091C1009CFF5B /* SSDSwiftShieldInteractorSpy.m */; };
 		FD3B4E6A23809554009CFF5B /* SSDMockFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3B4E6923809554009CFF5B /* SSDMockFile.m */; };
+		FD3B4E6D23809C8B009CFF5B /* SSDObfuscatorDelegateSpy.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3B4E6C23809C8B009CFF5B /* SSDObfuscatorDelegateSpy.m */; };
 		FDE51190237F2C1F00751E40 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE5118F237F2C1F00751E40 /* main.m */; };
 		FDE511A4237F2C5500751E40 /* SSDXcodeSchemeInformationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511A3237F2C5500751E40 /* SSDXcodeSchemeInformationProvider.m */; };
 		FDE511B9237F2D6C00751E40 /* SSDModule.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511B8237F2D6C00751E40 /* SSDModule.m */; };
@@ -79,6 +80,8 @@
 		FD3B4E66238091C1009CFF5B /* SSDSwiftShieldInteractorSpy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDSwiftShieldInteractorSpy.m; sourceTree = "<group>"; };
 		FD3B4E6823809554009CFF5B /* SSDMockFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSDMockFile.h; sourceTree = "<group>"; };
 		FD3B4E6923809554009CFF5B /* SSDMockFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDMockFile.m; sourceTree = "<group>"; };
+		FD3B4E6B23809C8B009CFF5B /* SSDObfuscatorDelegateSpy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSDObfuscatorDelegateSpy.h; sourceTree = "<group>"; };
+		FD3B4E6C23809C8B009CFF5B /* SSDObfuscatorDelegateSpy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDObfuscatorDelegateSpy.m; sourceTree = "<group>"; };
 		FDE5118C237F2C1F00751E40 /* SwiftShieldOBJC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftShieldOBJC; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDE5118F237F2C1F00751E40 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FDE5119C237F2C3100751E40 /* SSDFileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDFileTests.m; sourceTree = "<group>"; };
@@ -230,6 +233,8 @@
 				FDE511EB237F526000751E40 /* SSDDummyLogger.m */,
 				FD3B4E6823809554009CFF5B /* SSDMockFile.h */,
 				FD3B4E6923809554009CFF5B /* SSDMockFile.m */,
+				FD3B4E6B23809C8B009CFF5B /* SSDObfuscatorDelegateSpy.h */,
+				FD3B4E6C23809C8B009CFF5B /* SSDObfuscatorDelegateSpy.m */,
 			);
 			path = Dummies;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 				FD3B4E6A23809554009CFF5B /* SSDMockFile.m in Sources */,
 				FDE511E2237F48E800751E40 /* SSDRegex.m in Sources */,
 				FD3B4C2F23806E82009CFF5B /* SSDSwiftShieldController.m in Sources */,
+				FD3B4E6D23809C8B009CFF5B /* SSDObfuscatorDelegateSpy.m in Sources */,
 				FDE511E1237F48E800751E40 /* SSDNSLogLogger.m in Sources */,
 				FDE511E8237F4FC300751E40 /* SSDXcodeOutputParserTests.m in Sources */,
 				FD3B4C1523801C6E009CFF5B /* SSDReference.m in Sources */,

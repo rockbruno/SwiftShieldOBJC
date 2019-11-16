@@ -36,7 +36,7 @@
         [self.logger log:log];
         SSDSourceKitResponse* response = [self.sourceKit sendSynchronousIndexRequestForFile:file
                                                                             compilerArgs:module.compilerArguments];
-//        NSLog(@"%@", response.responseDescription);
+        NSLog(@"%@", response.responseDescription);
         [response recurseOverUid:[SSDSourceKitUID entitiesId] block:^(SSDSourceKitResponseVariant * _Nonnull variant) {
             [self processDeclarationEntity:variant ofResponse:response ofFile:file];
         }];
