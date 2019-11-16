@@ -1,9 +1,9 @@
-#import "SourceKit.h"
+#import "SSDSourceKit.h"
 #import "sourcekitd.h"
-#import "SourceKitUID.h"
-#import "SourceKitResponse.h"
+#import "SSDSourceKitUID.h"
+#import "SSDSourceKitResponse.h"
 
-@implementation SourceKit
+@implementation SSDSourceKit
 
 - (void)start {
     sourcekitd_initialize();
@@ -13,16 +13,16 @@
     sourcekitd_shutdown();
 }
 
-- (SourceKitResponse*)sendSynchronousIndexRequestForFile:(SSDFile*)file
+- (SSDSourceKitResponse*)sendSynchronousIndexRequestForFile:(SSDFile*)file
                               compilerArgs:(NSArray<NSString*>*)compilerArgs {
     sourcekitd_object_t requestDictionary = sourcekitd_request_dictionary_create(nil, nil, 0);
 
     sourcekitd_request_dictionary_set_uid(requestDictionary,
-                                          [SourceKitUID requestId].uid,
-                                          [SourceKitUID indexRequestId].uid);
+                                          [SSDSourceKitUID requestId].uid,
+                                          [SSDSourceKitUID indexRequestId].uid);
 
     sourcekitd_request_dictionary_set_string(requestDictionary,
-                                             [SourceKitUID sourceFileId].uid,
+                                             [SSDSourceKitUID sourceFileId].uid,
                                              [file.path cStringUsingEncoding:NSUTF8StringEncoding]);
 
     sourcekitd_object_t compilerArgsArgument = sourcekitd_request_array_create(nil, 0);
@@ -33,7 +33,7 @@
     }];
 
     sourcekitd_request_dictionary_set_value(requestDictionary,
-                                            [SourceKitUID compilerArgsId].uid,
+                                            [SSDSourceKitUID compilerArgsId].uid,
                                             compilerArgsArgument);
 
 //    char* utf8Str = sourcekitd_request_description_copy(requestDictionary);
@@ -42,7 +42,7 @@
 //    free(utf8Str);
 
     sourcekitd_response_t responseObject = sourcekitd_send_request_sync(requestDictionary);
-    SourceKitResponse* response = [[SourceKitResponse alloc] initWithSourceKitResponse:responseObject];
+    SSDSourceKitResponse* response = [[SSDSourceKitResponse alloc] initWithSourceKitResponse:responseObject];
 
     sourcekitd_request_release(compilerArgsArgument);
     sourcekitd_request_release(requestDictionary);

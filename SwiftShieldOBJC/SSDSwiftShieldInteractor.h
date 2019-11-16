@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "SSDObfuscatorProtocol.h"
-#import "SSDLogger.h"
+#import "SSDLoggerProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) id<SSDSwiftShieldInteractorDelegate> delegate;
 
 - (instancetype)initWithSchemeInformationProvider:(SSDXcodeSchemeInformationProvider*)schemeInformationProvider
-                                           logger:(SSDLogger)logger
+                                           logger:(SSDLoggerProtocol)logger
                                         obfuscator:(SSDObfuscatorProtocol)obfuscator;
 - (void)getModulesFromProject;
 - (void)obfuscateModules:(NSArray<SSDModule*>*)modules;

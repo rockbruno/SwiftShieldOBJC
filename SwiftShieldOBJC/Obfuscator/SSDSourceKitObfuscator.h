@@ -1,16 +1,16 @@
 #import <Foundation/Foundation.h>
 #import "SSDObfuscatorProtocol.h"
-#import "SSDLogger.h"
+#import "SSDLoggerProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class SourceKit;
+@class SSDSourceKit;
 @class SSDSourceKitObfuscatorDataStore;
 @class SSDReference;
 
 @interface SSDSourceKitObfuscator: NSObject <SSDObfuscator>
-- (instancetype)initWithSourceKit:(SourceKit*)sourceKit
-                           logger:(SSDLogger)logger
+- (instancetype)initWithSourceKit:(SSDSourceKit*)sourceKit
+                           logger:(SSDLoggerProtocol)logger
                         dataStore:(SSDSourceKitObfuscatorDataStore*)dataStore;
 
 - (NSString*)removeParameterInformationFromString:(NSString*)string;

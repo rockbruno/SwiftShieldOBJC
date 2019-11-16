@@ -1,7 +1,7 @@
 #import "SSDIndexedFile.h"
 
 @implementation SSDIndexedFile
-- (instancetype)initWithFile:(SSDFile *)file andResponse:(SourceKitResponse *)response {
+- (instancetype)initWithFile:(SSDFile *)file andResponse:(SSDSourceKitResponse *)response {
     self = [super init];
     if (self) {
         _file = file;

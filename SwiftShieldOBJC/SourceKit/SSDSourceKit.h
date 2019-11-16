@@ -3,10 +3,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class SourceKitResponse;
+@class SSDSourceKitResponse;
 
-@interface SourceKit : NSObject
-- (SourceKitResponse*)sendSynchronousIndexRequestForFile:(SSDFile*)file
+@interface SSDSourceKit : NSObject
+- (SSDSourceKitResponse*)sendSynchronousIndexRequestForFile:(SSDFile*)file
                                             compilerArgs:(NSArray*)compilerArgs;
 - (void)start;
 - (void)shutdown;

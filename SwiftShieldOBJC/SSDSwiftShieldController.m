@@ -2,20 +2,20 @@
 #import "SSDFile.h"
 #import "SSDModule.h"
 #import "SSDSwiftShieldInteractor.h"
-#import "SSDLogger.h"
+#import "SSDLoggerProtocol.h"
 
 @interface SSDSwiftShieldController (InteractorDelegate) <SSDSwiftShieldInteractorDelegate>
 @end
 
 @interface SSDSwiftShieldController ()
 @property (nonatomic) SSDSwiftShieldInteractor* interactor;
-@property (nonatomic) SSDLogger logger;
+@property (nonatomic) SSDLoggerProtocol logger;
 @end
 
 @implementation SSDSwiftShieldController
 
 - (instancetype)initWithInterator:(SSDSwiftShieldInteractor*)interactor
-                           logger:(SSDLogger)logger
+                           logger:(SSDLoggerProtocol)logger
 {
     self = [super init];
     if (self) {

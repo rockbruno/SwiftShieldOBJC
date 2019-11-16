@@ -4,7 +4,7 @@
 #import "SSDFile.h"
 #import "SSDXcodeOutputParser.h"
 #import "SSDXcodeSchemeInformationProvider.h"
-#import "SourceKit.h"
+#import "SSDSourceKit.h"
 #import "SSDSourceKitObfuscator.h"
 #import "SSDSourceKitObfuscatorDataStore.h"
 #import "SSDSwiftShieldInteractor.h"
@@ -24,7 +24,7 @@ int main(int argc, const char * argv[]) {
                                                            buildOutputParser:xcodeParser
                                                                       logger:logger];
 
-        SourceKit* sourceKit = [SourceKit new];
+        SSDSourceKit* sourceKit = [SSDSourceKit new];
         [sourceKit start];
 
         SSDSourceKitObfuscator* obfuscator = [[SSDSourceKitObfuscator alloc] initWithSourceKit:sourceKit

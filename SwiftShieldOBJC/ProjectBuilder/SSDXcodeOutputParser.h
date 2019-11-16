@@ -1,12 +1,12 @@
 #import <Foundation/Foundation.h>
-#import "SSDLogger.h"
+#import "SSDLoggerProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class SSDModule;
 
 @interface SSDXcodeOutputParser : NSObject
-- (instancetype)initWithLogger:(SSDLogger)logger;
+- (instancetype)initWithLogger:(SSDLoggerProtocol)logger;
 - (NSArray<SSDModule*>*)parseModulesFromOutput:(NSString*)output;
 @end
 

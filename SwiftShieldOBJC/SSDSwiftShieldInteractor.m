@@ -6,14 +6,14 @@
 
 @interface SSDSwiftShieldInteractor ()
 @property (nonatomic) SSDXcodeSchemeInformationProvider* schemeInformationProvider;
-@property (nonatomic) SSDLogger logger;
+@property (nonatomic) SSDLoggerProtocol logger;
 @property (nonatomic) SSDObfuscatorProtocol obfuscator;
 @end
 
 @implementation SSDSwiftShieldInteractor
 
 - (instancetype)initWithSchemeInformationProvider:(SSDXcodeSchemeInformationProvider*)schemeInformationProvider
-                                           logger:(SSDLogger)logger
+                                           logger:(SSDLoggerProtocol)logger
                                        obfuscator:(SSDObfuscatorProtocol)obfuscator {
     self = [super init];
     if (self) {

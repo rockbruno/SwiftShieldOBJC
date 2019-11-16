@@ -4,14 +4,14 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef enum : NSUInteger {
-    SourceKitDeclarationTypeUnsupported,
-    SourceKitDeclarationTypeObject,
-    SourceKitDeclarationTypeProtocol,
-    SourceKitDeclarationTypeMethod,
-    SourceKitDeclarationTypeProperty
-} SourceKitDeclarationType;
+    SSDSourceKitDeclarationTypeUnsupported,
+    SSDSourceKitDeclarationTypeObject,
+    SSDSourceKitDeclarationTypeProtocol,
+    SSDSourceKitDeclarationTypeMethod,
+    SSDSourceKitDeclarationTypeProperty
+} SSDSourceKitDeclarationType;
 
-@interface SourceKitUID : NSObject
+@interface SSDSourceKitUID : NSObject
 @property (nonatomic) sourcekitd_uid_t uid;
 
 + (instancetype)kindId;
@@ -30,8 +30,8 @@ typedef enum : NSUInteger {
 - (instancetype)initWithString:(NSString*)string;
 - (instancetype)initWithUid:(sourcekitd_uid_t)uid;
 - (NSString*)asString;
-- (SourceKitDeclarationType)declarationType;
-- (SourceKitDeclarationType)declarationTypeForReferenceKind;
+- (SSDSourceKitDeclarationType)declarationType;
+- (SSDSourceKitDeclarationType)declarationTypeForReferenceKind;
 @end
 
 NS_ASSUME_NONNULL_END

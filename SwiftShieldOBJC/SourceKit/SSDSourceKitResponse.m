@@ -1,16 +1,16 @@
-#import "SourceKitResponse.h"
+#import "SSDSourceKitResponse.h"
 #import "sourcekitd.h"
-#import "SourceKitUID.h"
+#import "SSDSourceKitUID.h"
 
-@interface SourceKitResponseDictionary ()
+@interface SSDSourceKitResponseDictionary ()
 @property (nonatomic) sourcekitd_variant_t dict;
 // The lifetime of this sourcekitd_variant_t is tied to the response it came
 // from, so keep a reference to the response too.
-@property (nonatomic) SourceKitResponse* context;
+@property (nonatomic) SSDSourceKitResponse* context;
 @end
 
-@implementation SourceKitResponseDictionary
-- (instancetype)initWithDictionary:(sourcekitd_variant_t)dict andContext:(SourceKitResponse*)context {
+@implementation SSDSourceKitResponseDictionary
+- (instancetype)initWithDictionary:(sourcekitd_variant_t)dict andContext:(SSDSourceKitResponse*)context {
     self = [super init];
     if (self) {
         _dict = dict;
@@ -19,7 +19,7 @@
     return self;
 }
 
-- (NSString *)getString:(SourceKitUID *)uid {
+- (NSString *)getString:(SSDSourceKitUID *)uid {
     const char* value = sourcekitd_variant_dictionary_get_string(self.dict, uid.uid);
     if (!value) {
         return NULL;
@@ -27,26 +27,26 @@
     return [NSString stringWithCString:value encoding:NSUTF8StringEncoding];
 }
 
-- (NSInteger)getInt:(SourceKitUID *)uid {
+- (NSInteger)getInt:(SSDSourceKitUID *)uid {
     int64_t value = sourcekitd_variant_dictionary_get_int64(self.dict, uid.uid);
     return value;
 }
 
-- (SourceKitUID *)getUid:(SourceKitUID *)uid {
+- (SSDSourceKitUID *)getUid:(SSDSourceKitUID *)uid {
     sourcekitd_uid_t value = sourcekitd_variant_dictionary_get_uid(self.dict, uid.uid);
-    return [[SourceKitUID alloc] initWithUid: value];
+    return [[SSDSourceKitUID alloc] initWithUid: value];
 }
 @end
 
-@interface SourceKitResponseVariant ()
+@interface SSDSourceKitResponseVariant ()
 @property (nonatomic) sourcekitd_variant_t value;
 // The lifetime of this sourcekitd_variant_t is tied to the response it came
 // from, so keep a reference to the response too.
-@property (nonatomic) SourceKitResponse* context;
+@property (nonatomic) SSDSourceKitResponse* context;
 @end
 
-@implementation SourceKitResponseVariant
-- (instancetype)initWithVariant:(sourcekitd_variant_t)value andContext:(SourceKitResponse*)context {
+@implementation SSDSourceKitResponseVariant
+- (instancetype)initWithVariant:(sourcekitd_variant_t)value andContext:(SSDSourceKitResponse*)context {
     self = [super init];
     if (self) {
         _value = value;
@@ -55,25 +55,25 @@
     return self;
 }
 
-- (SourceKitResponseDictionary *)dictionary {
-    return [[SourceKitResponseDictionary alloc] initWithDictionary:self.value andContext:self.context];
+- (SSDSourceKitResponseDictionary *)dictionary {
+    return [[SSDSourceKitResponseDictionary alloc] initWithDictionary:self.value andContext:self.context];
 }
 
-- (void)recurseOverUid:(SourceKitUID *)uid block:(ResponseRecursion)block {
+- (void)recurseOverUid:(SSDSourceKitUID *)uid block:(ResponseRecursion)block {
     sourcekitd_uid_t rawUid = uid.uid;
     sourcekitd_variant_t children = sourcekitd_variant_dictionary_get_value(self.value, rawUid);
     if (sourcekitd_variant_get_type(children) != SOURCEKITD_VARIANT_TYPE_ARRAY) {
         return;
     }
     sourcekitd_variant_array_apply(children, ^bool(size_t index, sourcekitd_variant_t value) {
-        SourceKitResponseVariant* variant = [[SourceKitResponseVariant alloc] initWithVariant:value andContext:self.context];
+        SSDSourceKitResponseVariant* variant = [[SSDSourceKitResponseVariant alloc] initWithVariant:value andContext:self.context];
         block(variant);
         [variant recurseOverUid:uid block:block];
         return true;
     });
 }
 
-- (BOOL)isEqualTo:(SourceKitResponseVariant*)otherVariant {
+- (BOOL)isEqualTo:(SSDSourceKitResponseVariant*)otherVariant {
     return self.value.data[0] == otherVariant.value.data[0] &&
            self.value.data[1] == otherVariant.value.data[1] &&
            self.value.data[2] == otherVariant.value.data[2];
@@ -81,12 +81,12 @@
 
 @end
 
-@interface SourceKitResponse () {
+@interface SSDSourceKitResponse () {
     sourcekitd_response_t _response;
 }
 @end
 
-@implementation SourceKitResponse
+@implementation SSDSourceKitResponse
 - (instancetype)initWithSourceKitResponse:(sourcekitd_response_t)response
 {
     self = [super init];
@@ -96,12 +96,12 @@
     return self;
 }
 
-- (SourceKitResponseVariant*)variant {
+- (SSDSourceKitResponseVariant*)variant {
     sourcekitd_variant_t value = sourcekitd_response_get_value(_response);
-    return [[SourceKitResponseVariant alloc] initWithVariant:value andContext:self];
+    return [[SSDSourceKitResponseVariant alloc] initWithVariant:value andContext:self];
 }
 
-- (void)recurseOverUid:(SourceKitUID *)uid block:(ResponseRecursion)block {
+- (void)recurseOverUid:(SSDSourceKitUID *)uid block:(ResponseRecursion)block {
     [[self variant] recurseOverUid:uid block:block];
 }
 

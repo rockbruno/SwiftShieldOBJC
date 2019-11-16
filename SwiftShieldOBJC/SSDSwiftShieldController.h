@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "SSDLogger.h"
+#import "SSDLoggerProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -10,7 +10,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL didFailToRun;
 
 - (instancetype)initWithInterator:(SSDSwiftShieldInteractor*)interactor
-                           logger:(SSDLogger)logger;
+                           logger:(SSDLoggerProtocol)logger;
 
 - (void)run;
 @end

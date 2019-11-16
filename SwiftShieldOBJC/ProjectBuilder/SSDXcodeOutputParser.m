@@ -1,16 +1,16 @@
 #import "SSDXcodeOutputParser.h"
 #import "SSDModule.h"
 #import "SSDRegex.h"
-#import "SSDLogger.h"
+#import "SSDLoggerProtocol.h"
 #import "SSDFile.h"
 
 @interface SSDXcodeOutputParser ()
-@property (nonatomic) SSDLogger logger;
+@property (nonatomic) SSDLoggerProtocol logger;
 @end
 
 @implementation SSDXcodeOutputParser
 
-- (instancetype)initWithLogger:(SSDLogger)logger {
+- (instancetype)initWithLogger:(SSDLoggerProtocol)logger {
     self = [super init];
     if (self) {
         _logger = logger;

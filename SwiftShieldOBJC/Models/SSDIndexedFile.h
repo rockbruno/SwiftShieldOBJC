@@ -3,13 +3,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class SSDFile;
-@class SourceKitResponse;
+@class SSDSourceKitResponse;
 
 @interface SSDIndexedFile: NSObject
 @property (readonly, nonatomic) SSDFile* file;
-@property (readonly, nonatomic) SourceKitResponse* response;
+@property (readonly, nonatomic) SSDSourceKitResponse* response;
 
-- (instancetype)initWithFile:(SSDFile*)file andResponse:(SourceKitResponse*)response;
+- (instancetype)initWithFile:(SSDFile*)file andResponse:(SSDSourceKitResponse*)response;
 @end
 
 NS_ASSUME_NONNULL_END

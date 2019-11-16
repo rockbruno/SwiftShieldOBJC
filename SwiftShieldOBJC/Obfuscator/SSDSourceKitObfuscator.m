@@ -1,16 +1,16 @@
 #import "SSDSourceKitObfuscator.h"
 #import "SSDObfuscatorProtocol.h"
 #import "SSDModule.h"
-#import "SourceKit.h"
-#import "SourceKitResponse.h"
-#import "SourceKitUID.h"
+#import "SSDSourceKit.h"
+#import "SSDSourceKitResponse.h"
+#import "SSDSourceKitUID.h"
 #import "SSDSourceKitObfuscatorDataStore.h"
 #import "SSDIndexedFile.h"
 #import "SSDReference.h"
 
 @interface SSDSourceKitObfuscator ()
-@property (nonatomic) SourceKit* sourceKit;
-@property (nonatomic) SSDLogger logger;
+@property (nonatomic) SSDSourceKit* sourceKit;
+@property (nonatomic) SSDLoggerProtocol logger;
 @property (nonatomic) SSDSourceKitObfuscatorDataStore* dataStore;
 @end
 
@@ -18,8 +18,8 @@
 
 @synthesize delegate;
 
-- (instancetype)initWithSourceKit:(SourceKit*)sourceKit
-                           logger:(SSDLogger)logger
+- (instancetype)initWithSourceKit:(SSDSourceKit*)sourceKit
+                           logger:(SSDLoggerProtocol)logger
                         dataStore:(SSDSourceKitObfuscatorDataStore*)dataStore {
     self = [super init];
     if (self) {
@@ -34,10 +34,10 @@
     [module.sourceFiles enumerateObjectsUsingBlock:^(SSDFile * _Nonnull file, NSUInteger idx, BOOL * _Nonnull stop) {
         NSString* log = [NSString stringWithFormat:@"Indexing: %@", file.name];
         [self.logger log:log];
-        SourceKitResponse* response = [self.sourceKit sendSynchronousIndexRequestForFile:file
+        SSDSourceKitResponse* response = [self.sourceKit sendSynchronousIndexRequestForFile:file
                                                                             compilerArgs:module.compilerArguments];
 //        NSLog(@"%@", response.responseDescription);
-        [response recurseOverUid:[SourceKitUID entitiesId] block:^(SourceKitResponseVariant * _Nonnull variant) {
+        [response recurseOverUid:[SSDSourceKitUID entitiesId] block:^(SSDSourceKitResponseVariant * _Nonnull variant) {
             [self processDeclarationEntity:variant ofResponse:response ofFile:file];
         }];
 
@@ -46,17 +46,17 @@
     }];
 }
 
-- (void)processDeclarationEntity:(SourceKitResponseVariant*)variant
-                      ofResponse:(SourceKitResponse*)response
+- (void)processDeclarationEntity:(SSDSourceKitResponseVariant*)variant
+                      ofResponse:(SSDSourceKitResponse*)response
                           ofFile:(SSDFile*)file {
-    SourceKitResponseDictionary* dict = [variant dictionary];
-    SourceKitUID* entityKind = [dict getUid: [SourceKitUID kindId]];
-    SourceKitDeclarationType declType = [entityKind declarationType];
-    if (declType == SourceKitDeclarationTypeUnsupported) {
+    SSDSourceKitResponseDictionary* dict = [variant dictionary];
+    SSDSourceKitUID* entityKind = [dict getUid: [SSDSourceKitUID kindId]];
+    SSDSourceKitDeclarationType declType = [entityKind declarationType];
+    if (declType == SSDSourceKitDeclarationTypeUnsupported) {
         return;
     }
-    NSString* rawName = [dict getString:[SourceKitUID nameId]];
-    NSString* usr = [dict getString:[SourceKitUID usrId]];
+    NSString* rawName = [dict getString:[SSDSourceKitUID nameId]];
+    NSString* usr = [dict getString:[SSDSourceKitUID usrId]];
     if (!rawName || !usr) {
         return;
     }
@@ -66,7 +66,7 @@
     [self.logger log:[NSString stringWithFormat:@"Found declaration of %@ (USR: %@)", name, usr]];
     [self.dataStore.processedUsrs addObject:usr];
 
-    if (![dict getString:[SourceKitUID receiverId]]) {
+    if (![dict getString:[SSDSourceKitUID receiverId]]) {
         self.dataStore.usrRelationDictionary[usr] = variant;
     }
 }
@@ -105,15 +105,15 @@
     {
         [self.logger log: [NSString stringWithFormat:@"Obfuscating %@", obj.file.name]];
         NSMutableArray<SSDReference*>* referenceArray = [NSMutableArray new];
-        [obj.response recurseOverUid:[SourceKitUID entitiesId] block:^(SourceKitResponseVariant * _Nonnull variant) {
-            SourceKitResponseDictionary* dict = [variant dictionary];
-            SourceKitUID* kindUid = [dict getUid:[SourceKitUID kindId]];
-            SourceKitDeclarationType referenceType = [kindUid declarationTypeForReferenceKind];
-            if (referenceType == SourceKitDeclarationTypeUnsupported) {
+        [obj.response recurseOverUid:[SSDSourceKitUID entitiesId] block:^(SSDSourceKitResponseVariant * _Nonnull variant) {
+            SSDSourceKitResponseDictionary* dict = [variant dictionary];
+            SSDSourceKitUID* kindUid = [dict getUid:[SSDSourceKitUID kindId]];
+            SSDSourceKitDeclarationType referenceType = [kindUid declarationTypeForReferenceKind];
+            if (referenceType == SSDSourceKitDeclarationTypeUnsupported) {
                 return;
             }
-            NSString* usr = [dict getString:[SourceKitUID usrId]];
-            NSString* rawName = [dict getString:[SourceKitUID nameId]];
+            NSString* usr = [dict getString:[SSDSourceKitUID usrId]];
+            NSString* rawName = [dict getString:[SSDSourceKitUID nameId]];
             if (!usr || !rawName) {
                 return;
             }
@@ -126,8 +126,8 @@
                 return;
             }
 
-            NSInteger line = [dict getInt:[SourceKitUID lineId]];
-            NSInteger column = [dict getInt:[SourceKitUID colId]];
+            NSInteger line = [dict getInt:[SSDSourceKitUID lineId]];
+            NSInteger column = [dict getInt:[SSDSourceKitUID colId]];
             NSString* name = [self removeParameterInformationFromString:rawName];
             NSString* obfuscatedName = [self obfuscatedStringForString:name];
 
@@ -151,33 +151,33 @@
     }];
 }
 
-- (BOOL)isVariantReferencingClosedSourceFrameworks:(SourceKitResponseVariant*)variant
-                                            ofType:(SourceKitDeclarationType)type {
-    if (type != SourceKitDeclarationTypeMethod && type != SourceKitDeclarationTypeProperty) {
+- (BOOL)isVariantReferencingClosedSourceFrameworks:(SSDSourceKitResponseVariant*)variant
+                                            ofType:(SSDSourceKitDeclarationType)type {
+    if (type != SSDSourceKitDeclarationTypeMethod && type != SSDSourceKitDeclarationTypeProperty) {
         return NO;
     }
-    NSString* usr = [[variant dictionary] getString:[SourceKitUID usrId]];
+    NSString* usr = [[variant dictionary] getString:[SSDSourceKitUID usrId]];
     if (!usr) {
         return NO;
     }
-    SourceKitResponseVariant* relatedVariant = self.dataStore.usrRelationDictionary[usr];
+    SSDSourceKitResponseVariant* relatedVariant = self.dataStore.usrRelationDictionary[usr];
     if (relatedVariant && [relatedVariant isEqualTo:variant] == NO) {
         return [self isVariantReferencingClosedSourceFrameworks:relatedVariant
                                                          ofType:type];
     }
     BOOL __block isReference = NO;
-    [variant recurseOverUid:[SourceKitUID relatedId] block:^(SourceKitResponseVariant * _Nonnull variant) {
+    [variant recurseOverUid:[SSDSourceKitUID relatedId] block:^(SSDSourceKitResponseVariant * _Nonnull variant) {
         if (isReference) {
             return;
         }
-        NSString* usr = [[variant dictionary] getString:[SourceKitUID usrId]];
+        NSString* usr = [[variant dictionary] getString:[SSDSourceKitUID usrId]];
         if (!usr) {
             return;
         }
         if ([self.dataStore.processedUsrs containsObject:usr] == NO) {
             isReference = YES;
         } else {
-            SourceKitResponseVariant* relatedVariant = self.dataStore.usrRelationDictionary[usr];
+            SSDSourceKitResponseVariant* relatedVariant = self.dataStore.usrRelationDictionary[usr];
             if (relatedVariant) {
                 isReference = [self isVariantReferencingClosedSourceFrameworks:relatedVariant
                                                                         ofType:type];

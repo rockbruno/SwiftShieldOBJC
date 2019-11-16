@@ -1,5 +1,5 @@
 #import <XCTest/XCTest.h>
-#import "SourceKit.h"
+#import "SSDSourceKit.h"
 #import "SSDSourceKitObfuscator.h"
 #import "SSDDummyLogger.h"
 #import "SSDSourceKitObfuscatorDataStore.h"
@@ -19,7 +19,7 @@
 }
 
 - (void)test_moduleRegistration {
-    SourceKit* sourceKit = [SourceKit new];
+    SSDSourceKit* sourceKit = [SSDSourceKit new];
     [sourceKit start];
     SSDSourceKitObfuscatorDataStore* dataStore = [SSDSourceKitObfuscatorDataStore new];
 
@@ -53,7 +53,7 @@
 
 - (void)test_removeParameterInformationFromString {
     SSDSourceKitObfuscatorDataStore* dataStore = [SSDSourceKitObfuscatorDataStore new];
-    SSDSourceKitObfuscator* obfuscator = [[SSDSourceKitObfuscator alloc] initWithSourceKit:[SourceKit new]
+    SSDSourceKitObfuscator* obfuscator = [[SSDSourceKitObfuscator alloc] initWithSourceKit:[SSDSourceKit new]
                                                                                     logger:[SSDDummyLogger new]
                                                                                  dataStore:dataStore];
 
@@ -66,7 +66,7 @@
 
 - (void)test_obfuscatedString_cachesSimilarStrings {
     SSDSourceKitObfuscatorDataStore* dataStore = [SSDSourceKitObfuscatorDataStore new];
-    SSDSourceKitObfuscator* obfuscator = [[SSDSourceKitObfuscator alloc] initWithSourceKit:[SourceKit new]
+    SSDSourceKitObfuscator* obfuscator = [[SSDSourceKitObfuscator alloc] initWithSourceKit:[SSDSourceKit new]
                                                                                     logger:[SSDDummyLogger new]
                                                                                  dataStore:dataStore];
 
@@ -95,7 +95,7 @@
     SSDReference* fooDecl = [[SSDReference alloc] initWithName:@"Foo" line:1 column:7];
 
     SSDSourceKitObfuscatorDataStore* dataStore = [SSDSourceKitObfuscatorDataStore new];
-    SSDSourceKitObfuscator* obfuscator = [[SSDSourceKitObfuscator alloc] initWithSourceKit:[SourceKit new]
+    SSDSourceKitObfuscator* obfuscator = [[SSDSourceKitObfuscator alloc] initWithSourceKit:[SSDSourceKit new]
                                                                                     logger:[SSDDummyLogger new]
                                                                                  dataStore:dataStore];
 
@@ -118,7 +118,7 @@
     SSDReference* fooDecl = [[SSDReference alloc] initWithName:@"Foo" line:1 column:7];
 
     SSDSourceKitObfuscatorDataStore* dataStore = [SSDSourceKitObfuscatorDataStore new];
-    SSDSourceKitObfuscator* obfuscator = [[SSDSourceKitObfuscator alloc] initWithSourceKit:[SourceKit new]
+    SSDSourceKitObfuscator* obfuscator = [[SSDSourceKitObfuscator alloc] initWithSourceKit:[SSDSourceKit new]
                                                                                     logger:[SSDDummyLogger new]
                                                                                  dataStore:dataStore];
 

@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "SSDLogger.h"
+#import "SSDLoggerProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithProjectFile:(SSDFile*)projectFile
                          schemeName:(NSString* )schemeName
                   buildOutputParser:(SSDXcodeOutputParser*)outputParser
-                             logger:(SSDLogger)logger;
+                             logger:(SSDLoggerProtocol)logger;
 - (NSArray<SSDModule*>*)getModulesFromProject:(NSError * _Nullable *)error;
 
 - (NSTask*)buildTask;

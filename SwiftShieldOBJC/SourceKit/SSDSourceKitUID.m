@@ -1,57 +1,57 @@
-#import "SourceKitUID.h"
+#import "SSDSourceKitUID.h"
 
-@implementation SourceKitUID
+@implementation SSDSourceKitUID
 
 + (NSString*)swiftLanguagePrefix {
     return @"source.lang.swift";
 }
 
 + (instancetype)kindId {
-    return [[SourceKitUID alloc] initWithString:@"key.kind"];
+    return [[SSDSourceKitUID alloc] initWithString:@"key.kind"];
 }
 
 + (instancetype)nameId {
-    return [[SourceKitUID alloc] initWithString:@"key.name"];
+    return [[SSDSourceKitUID alloc] initWithString:@"key.name"];
 }
 
 + (instancetype)usrId {
-    return [[SourceKitUID alloc] initWithString:@"key.usr"];
+    return [[SSDSourceKitUID alloc] initWithString:@"key.usr"];
 }
 
 + (instancetype)receiverId {
-    return [[SourceKitUID alloc] initWithString:@"key.receiver_usr"];
+    return [[SSDSourceKitUID alloc] initWithString:@"key.receiver_usr"];
 }
 
 + (instancetype)entitiesId {
-    return [[SourceKitUID alloc] initWithString:@"key.entities"];
+    return [[SSDSourceKitUID alloc] initWithString:@"key.entities"];
 }
 
 + (instancetype)lineId {
-    return [[SourceKitUID alloc] initWithString:@"key.line"];
+    return [[SSDSourceKitUID alloc] initWithString:@"key.line"];
 }
 
 + (instancetype)colId {
-    return [[SourceKitUID alloc] initWithString:@"key.column"];
+    return [[SSDSourceKitUID alloc] initWithString:@"key.column"];
 }
 
 + (instancetype)relatedId {
-    return [[SourceKitUID alloc] initWithString:@"key.related"];
+    return [[SSDSourceKitUID alloc] initWithString:@"key.related"];
 }
 
 + (instancetype)sourceFileId {
-    return [[SourceKitUID alloc] initWithString:@"key.sourcefile"];
+    return [[SSDSourceKitUID alloc] initWithString:@"key.sourcefile"];
 }
 
 + (instancetype)requestId {
-    return [[SourceKitUID alloc] initWithString:@"key.request"];
+    return [[SSDSourceKitUID alloc] initWithString:@"key.request"];
 }
 
 + (instancetype)indexRequestId {
-    return [[SourceKitUID alloc] initWithString:@"source.request.indexsource"];
+    return [[SSDSourceKitUID alloc] initWithString:@"source.request.indexsource"];
 }
 
 + (instancetype)compilerArgsId {
-    return [[SourceKitUID alloc] initWithString:@"key.compilerargs"];
+    return [[SSDSourceKitUID alloc] initWithString:@"key.compilerargs"];
 }
 
 - (instancetype)initWithString:(NSString *)string {
@@ -75,25 +75,25 @@
     return [NSString stringWithCString:characters encoding:NSUTF8StringEncoding];
 }
 
-- (SourceKitDeclarationType)declarationTypeForReferenceKind {
+- (SSDSourceKitDeclarationType)declarationTypeForReferenceKind {
     // A declaration is also a reference kind.
-    SourceKitDeclarationType kindForDecl = [self declarationType];
-    if (kindForDecl == SourceKitDeclarationTypeUnsupported) {
+    SSDSourceKitDeclarationType kindForDecl = [self declarationType];
+    if (kindForDecl == SSDSourceKitDeclarationTypeUnsupported) {
         return [self declarationTypeWithExpectedSuffix:@".ref."];
     } else {
         return kindForDecl;
     }
 }
 
-- (SourceKitDeclarationType)declarationType{
+- (SSDSourceKitDeclarationType)declarationType{
     return [self declarationTypeWithExpectedSuffix:@".decl."];
 }
 
-- (SourceKitDeclarationType)declarationTypeWithExpectedSuffix:(NSString*)suffix {
-    NSString* prefix = [[SourceKitUID swiftLanguagePrefix] stringByAppendingString:suffix];
+- (SSDSourceKitDeclarationType)declarationTypeWithExpectedSuffix:(NSString*)suffix {
+    NSString* prefix = [[SSDSourceKitUID swiftLanguagePrefix] stringByAppendingString:suffix];
     NSString* kind = [self asString];
     if ([kind hasPrefix:prefix] == NO) {
-        return SourceKitDeclarationTypeUnsupported;
+        return SSDSourceKitDeclarationTypeUnsupported;
     }
     NSString* kindSuffix = [kind substringFromIndex:[prefix length]];
 
@@ -105,13 +105,13 @@
                                                            @"function.method.class"]];
 
     if ([objectSuffixes containsObject:kindSuffix]) {
-        return SourceKitDeclarationTypeObject;
+        return SSDSourceKitDeclarationTypeObject;
     } else if ([protocolSuffixes containsObject:kindSuffix]) {
-        return SourceKitDeclarationTypeProtocol;
+        return SSDSourceKitDeclarationTypeProtocol;
     } else if ([methodSuffixes containsObject:kindSuffix]) {
-        return SourceKitDeclarationTypeMethod;
+        return SSDSourceKitDeclarationTypeMethod;
     } else {
-        return SourceKitDeclarationTypeUnsupported;
+        return SSDSourceKitDeclarationTypeUnsupported;
     }
 }
 
