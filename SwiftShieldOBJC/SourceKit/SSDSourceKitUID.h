@@ -3,13 +3,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, SSDSourceKitDeclarationType) {
     SSDSourceKitDeclarationTypeUnsupported,
     SSDSourceKitDeclarationTypeObject,
     SSDSourceKitDeclarationTypeProtocol,
     SSDSourceKitDeclarationTypeMethod,
     SSDSourceKitDeclarationTypeProperty
-} SSDSourceKitDeclarationType;
+};
 
 @interface SSDSourceKitUID : NSObject
 @property (nonatomic) sourcekitd_uid_t uid;
