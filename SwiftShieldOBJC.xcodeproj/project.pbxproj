@@ -1,0 +1,596 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FD3B4C0E23801180009CFF5B /* SSDReference.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3B4C0D23801180009CFF5B /* SSDReference.m */; };
+		FD3B4C1523801C6E009CFF5B /* SSDReference.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3B4C0D23801180009CFF5B /* SSDReference.m */; };
+		FD3B4C19238047BA009CFF5B /* SSDXcodeSchemeInformationProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3B4C18238047BA009CFF5B /* SSDXcodeSchemeInformationProviderTests.m */; };
+		FD3B4C2023806601009CFF5B /* SSDSourceKitObfuscator.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3B4C1F23806601009CFF5B /* SSDSourceKitObfuscator.m */; };
+		FD3B4C23238067F5009CFF5B /* SSDSourceKitObfuscatorDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3B4C22238067F5009CFF5B /* SSDSourceKitObfuscatorDataStore.m */; };
+		FD3B4C2623806D45009CFF5B /* SSDSourceKitObfuscatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3B4C2523806D45009CFF5B /* SSDSourceKitObfuscatorTests.m */; };
+		FD3B4C2723806DA9009CFF5B /* SSDSourceKitObfuscator.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3B4C1F23806601009CFF5B /* SSDSourceKitObfuscator.m */; };
+		FD3B4C2823806DD5009CFF5B /* SSDSourceKitObfuscatorDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3B4C22238067F5009CFF5B /* SSDSourceKitObfuscatorDataStore.m */; };
+		FD3B4C2923806E58009CFF5B /* SourceKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511F9237F649000751E40 /* SourceKit.m */; };
+		FD3B4C2A23806E58009CFF5B /* SourceKitUID.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511FC237F66FB00751E40 /* SourceKitUID.m */; };
+		FD3B4C2B23806E58009CFF5B /* SSDIndexedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE51208237F98E600751E40 /* SSDIndexedFile.m */; };
+		FD3B4C2C23806E66009CFF5B /* SourceKitResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511FF237F71DB00751E40 /* SourceKitResponse.m */; };
+		FD3B4C2D23806E72009CFF5B /* sourcekitd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDE511F5237F647800751E40 /* sourcekitd.framework */; };
+		FD3B4C2F23806E82009CFF5B /* SSDSwiftShieldController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511F2237F5CB300751E40 /* SSDSwiftShieldController.m */; };
+		FD3B4C3223807ABD009CFF5B /* SSDSwiftShieldInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3B4C3123807ABD009CFF5B /* SSDSwiftShieldInteractor.m */; };
+		FDE51190237F2C1F00751E40 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE5118F237F2C1F00751E40 /* main.m */; };
+		FDE511A4237F2C5500751E40 /* SSDXcodeSchemeInformationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511A3237F2C5500751E40 /* SSDXcodeSchemeInformationProvider.m */; };
+		FDE511B9237F2D6C00751E40 /* SSDModule.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511B8237F2D6C00751E40 /* SSDModule.m */; };
+		FDE511BC237F2E4A00751E40 /* SSDFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511BB237F2E4A00751E40 /* SSDFile.m */; };
+		FDE511D1237F36AA00751E40 /* SSDFileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE5119C237F2C3100751E40 /* SSDFileTests.m */; };
+		FDE511D2237F3BD000751E40 /* SSDFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511BB237F2E4A00751E40 /* SSDFile.m */; };
+		FDE511D3237F3C7000751E40 /* SSDXcodeSchemeInformationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511A3237F2C5500751E40 /* SSDXcodeSchemeInformationProvider.m */; };
+		FDE511D4237F3C7000751E40 /* SSDModule.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511B8237F2D6C00751E40 /* SSDModule.m */; };
+		FDE511DA237F3E2F00751E40 /* SSDNSLogLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511D9237F3E2F00751E40 /* SSDNSLogLogger.m */; };
+		FDE511DD237F464300751E40 /* SSDRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511DC237F464300751E40 /* SSDRegex.m */; };
+		FDE511E0237F489C00751E40 /* SSDRegexTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511DF237F489C00751E40 /* SSDRegexTests.m */; };
+		FDE511E1237F48E800751E40 /* SSDNSLogLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511D9237F3E2F00751E40 /* SSDNSLogLogger.m */; };
+		FDE511E2237F48E800751E40 /* SSDRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511DC237F464300751E40 /* SSDRegex.m */; };
+		FDE511E5237F4E8C00751E40 /* SSDXcodeOutputParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511E4237F4E8C00751E40 /* SSDXcodeOutputParser.m */; };
+		FDE511E8237F4FC300751E40 /* SSDXcodeOutputParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511E7237F4FC300751E40 /* SSDXcodeOutputParserTests.m */; };
+		FDE511E9237F4FC600751E40 /* SSDXcodeOutputParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511E4237F4E8C00751E40 /* SSDXcodeOutputParser.m */; };
+		FDE511EC237F526000751E40 /* SSDDummyLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511EB237F526000751E40 /* SSDDummyLogger.m */; };
+		FDE511F3237F5CB300751E40 /* SSDSwiftShieldController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511F2237F5CB300751E40 /* SSDSwiftShieldController.m */; };
+		FDE511F7237F647800751E40 /* sourcekitd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDE511F5237F647800751E40 /* sourcekitd.framework */; };
+		FDE511FA237F649000751E40 /* SourceKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511F9237F649000751E40 /* SourceKit.m */; };
+		FDE511FD237F66FB00751E40 /* SourceKitUID.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511FC237F66FB00751E40 /* SourceKitUID.m */; };
+		FDE51200237F71DB00751E40 /* SourceKitResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE511FF237F71DB00751E40 /* SourceKitResponse.m */; };
+		FDE51209237F98E600751E40 /* SSDIndexedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE51208237F98E600751E40 /* SSDIndexedFile.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FDE5118A237F2C1F00751E40 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		FD3B4C0C23801180009CFF5B /* SSDReference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSDReference.h; sourceTree = "<group>"; };
+		FD3B4C0D23801180009CFF5B /* SSDReference.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDReference.m; sourceTree = "<group>"; };
+		FD3B4C18238047BA009CFF5B /* SSDXcodeSchemeInformationProviderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDXcodeSchemeInformationProviderTests.m; sourceTree = "<group>"; };
+		FD3B4C1A2380651D009CFF5B /* SSDObfuscatorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSDObfuscatorProtocol.h; sourceTree = "<group>"; };
+		FD3B4C1E23806601009CFF5B /* SSDSourceKitObfuscator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSDSourceKitObfuscator.h; sourceTree = "<group>"; };
+		FD3B4C1F23806601009CFF5B /* SSDSourceKitObfuscator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDSourceKitObfuscator.m; sourceTree = "<group>"; };
+		FD3B4C21238067F5009CFF5B /* SSDSourceKitObfuscatorDataStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSDSourceKitObfuscatorDataStore.h; sourceTree = "<group>"; };
+		FD3B4C22238067F5009CFF5B /* SSDSourceKitObfuscatorDataStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDSourceKitObfuscatorDataStore.m; sourceTree = "<group>"; };
+		FD3B4C2523806D45009CFF5B /* SSDSourceKitObfuscatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDSourceKitObfuscatorTests.m; sourceTree = "<group>"; };
+		FD3B4C3023807ABD009CFF5B /* SSDSwiftShieldInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSDSwiftShieldInteractor.h; sourceTree = "<group>"; };
+		FD3B4C3123807ABD009CFF5B /* SSDSwiftShieldInteractor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDSwiftShieldInteractor.m; sourceTree = "<group>"; };
+		FDE5118C237F2C1F00751E40 /* SwiftShieldOBJC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftShieldOBJC; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDE5118F237F2C1F00751E40 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FDE5119C237F2C3100751E40 /* SSDFileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDFileTests.m; sourceTree = "<group>"; };
+		FDE511A2237F2C5500751E40 /* SSDXcodeSchemeInformationProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSDXcodeSchemeInformationProvider.h; sourceTree = "<group>"; };
+		FDE511A3237F2C5500751E40 /* SSDXcodeSchemeInformationProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDXcodeSchemeInformationProvider.m; sourceTree = "<group>"; };
+		FDE511B7237F2D6C00751E40 /* SSDModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSDModule.h; sourceTree = "<group>"; };
+		FDE511B8237F2D6C00751E40 /* SSDModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDModule.m; sourceTree = "<group>"; };
+		FDE511BA237F2E4A00751E40 /* SSDFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSDFile.h; sourceTree = "<group>"; };
+		FDE511BB237F2E4A00751E40 /* SSDFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDFile.m; sourceTree = "<group>"; };
+		FDE511C6237F35F500751E40 /* SwiftShieldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftShieldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDE511CA237F35F500751E40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FDE511D5237F3CDE00751E40 /* SSDLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSDLogger.h; sourceTree = "<group>"; };
+		FDE511D8237F3E2F00751E40 /* SSDNSLogLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSDNSLogLogger.h; sourceTree = "<group>"; };
+		FDE511D9237F3E2F00751E40 /* SSDNSLogLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDNSLogLogger.m; sourceTree = "<group>"; };
+		FDE511DB237F464300751E40 /* SSDRegex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSDRegex.h; sourceTree = "<group>"; };
+		FDE511DC237F464300751E40 /* SSDRegex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDRegex.m; sourceTree = "<group>"; };
+		FDE511DF237F489C00751E40 /* SSDRegexTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDRegexTests.m; sourceTree = "<group>"; };
+		FDE511E3237F4E8C00751E40 /* SSDXcodeOutputParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSDXcodeOutputParser.h; sourceTree = "<group>"; };
+		FDE511E4237F4E8C00751E40 /* SSDXcodeOutputParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDXcodeOutputParser.m; sourceTree = "<group>"; };
+		FDE511E7237F4FC300751E40 /* SSDXcodeOutputParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDXcodeOutputParserTests.m; sourceTree = "<group>"; };
+		FDE511EA237F526000751E40 /* SSDDummyLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSDDummyLogger.h; sourceTree = "<group>"; };
+		FDE511EB237F526000751E40 /* SSDDummyLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDDummyLogger.m; sourceTree = "<group>"; };
+		FDE511F1237F5CB300751E40 /* SSDSwiftShieldController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SSDSwiftShieldController.h; path = SwiftShieldOBJC/SSDSwiftShieldController.h; sourceTree = SOURCE_ROOT; };
+		FDE511F2237F5CB300751E40 /* SSDSwiftShieldController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SSDSwiftShieldController.m; path = SwiftShieldOBJC/SSDSwiftShieldController.m; sourceTree = SOURCE_ROOT; };
+		FDE511F5237F647800751E40 /* sourcekitd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = sourcekitd.framework; path = Toolchains/XcodeDefault.xctoolchain/usr/lib/sourcekitd.framework; sourceTree = DEVELOPER_DIR; };
+		FDE511F6237F647800751E40 /* sourcekitd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sourcekitd.h; path = "../../../swiftshield/swiftshield-Sources/sourcekitd.h"; sourceTree = "<group>"; };
+		FDE511F8237F649000751E40 /* SourceKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceKit.h; sourceTree = "<group>"; };
+		FDE511F9237F649000751E40 /* SourceKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceKit.m; sourceTree = "<group>"; };
+		FDE511FB237F66FB00751E40 /* SourceKitUID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceKitUID.h; sourceTree = "<group>"; };
+		FDE511FC237F66FB00751E40 /* SourceKitUID.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceKitUID.m; sourceTree = "<group>"; };
+		FDE511FE237F71DB00751E40 /* SourceKitResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceKitResponse.h; sourceTree = "<group>"; };
+		FDE511FF237F71DB00751E40 /* SourceKitResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceKitResponse.m; sourceTree = "<group>"; };
+		FDE51207237F98E600751E40 /* SSDIndexedFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSDIndexedFile.h; sourceTree = "<group>"; };
+		FDE51208237F98E600751E40 /* SSDIndexedFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSDIndexedFile.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FDE51189237F2C1F00751E40 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDE511F7237F647800751E40 /* sourcekitd.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDE511C3237F35F500751E40 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD3B4C2D23806E72009CFF5B /* sourcekitd.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FD3B4C1D23806529009CFF5B /* Obfuscator */ = {
+			isa = PBXGroup;
+			children = (
+				FD3B4C1A2380651D009CFF5B /* SSDObfuscatorProtocol.h */,
+				FD3B4C1E23806601009CFF5B /* SSDSourceKitObfuscator.h */,
+				FD3B4C21238067F5009CFF5B /* SSDSourceKitObfuscatorDataStore.h */,
+				FD3B4C22238067F5009CFF5B /* SSDSourceKitObfuscatorDataStore.m */,
+				FD3B4C1F23806601009CFF5B /* SSDSourceKitObfuscator.m */,
+			);
+			path = Obfuscator;
+			sourceTree = "<group>";
+		};
+		FDE51183237F2C1F00751E40 = {
+			isa = PBXGroup;
+			children = (
+				FDE5118E237F2C1F00751E40 /* SwiftShieldOBJC */,
+				FDE511C7237F35F500751E40 /* SwiftShieldTests */,
+				FDE5118D237F2C1F00751E40 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FDE5118D237F2C1F00751E40 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FDE5118C237F2C1F00751E40 /* SwiftShieldOBJC */,
+				FDE511C6237F35F500751E40 /* SwiftShieldTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FDE5118E237F2C1F00751E40 /* SwiftShieldOBJC */ = {
+			isa = PBXGroup;
+			children = (
+				FDE5118F237F2C1F00751E40 /* main.m */,
+				FDE511F4237F646C00751E40 /* SourceKit */,
+				FDE511F1237F5CB300751E40 /* SSDSwiftShieldController.h */,
+				FD3B4C3023807ABD009CFF5B /* SSDSwiftShieldInteractor.h */,
+				FD3B4C3123807ABD009CFF5B /* SSDSwiftShieldInteractor.m */,
+				FD3B4C1D23806529009CFF5B /* Obfuscator */,
+				FDE511F2237F5CB300751E40 /* SSDSwiftShieldController.m */,
+				FDE511EF237F5C9000751E40 /* Logger */,
+				FDE511EE237F5C8000751E40 /* Models */,
+				FDE511F0237F5C9F00751E40 /* Helpers */,
+				FDE511A5237F2C5F00751E40 /* ProjectBuilder */,
+			);
+			path = SwiftShieldOBJC;
+			sourceTree = "<group>";
+		};
+		FDE511A5237F2C5F00751E40 /* ProjectBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				FDE511A2237F2C5500751E40 /* SSDXcodeSchemeInformationProvider.h */,
+				FDE511A3237F2C5500751E40 /* SSDXcodeSchemeInformationProvider.m */,
+				FDE511E3237F4E8C00751E40 /* SSDXcodeOutputParser.h */,
+				FDE511E4237F4E8C00751E40 /* SSDXcodeOutputParser.m */,
+			);
+			path = ProjectBuilder;
+			sourceTree = "<group>";
+		};
+		FDE511C7237F35F500751E40 /* SwiftShieldTests */ = {
+			isa = PBXGroup;
+			children = (
+				FDE5119C237F2C3100751E40 /* SSDFileTests.m */,
+				FDE511DF237F489C00751E40 /* SSDRegexTests.m */,
+				FDE511ED237F526400751E40 /* Dummies */,
+				FDE511E7237F4FC300751E40 /* SSDXcodeOutputParserTests.m */,
+				FD3B4C18238047BA009CFF5B /* SSDXcodeSchemeInformationProviderTests.m */,
+				FDE511CA237F35F500751E40 /* Info.plist */,
+				FD3B4C2523806D45009CFF5B /* SSDSourceKitObfuscatorTests.m */,
+			);
+			path = SwiftShieldTests;
+			sourceTree = "<group>";
+		};
+		FDE511ED237F526400751E40 /* Dummies */ = {
+			isa = PBXGroup;
+			children = (
+				FDE511EA237F526000751E40 /* SSDDummyLogger.h */,
+				FDE511EB237F526000751E40 /* SSDDummyLogger.m */,
+			);
+			path = Dummies;
+			sourceTree = "<group>";
+		};
+		FDE511EE237F5C8000751E40 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FDE51207237F98E600751E40 /* SSDIndexedFile.h */,
+				FDE51208237F98E600751E40 /* SSDIndexedFile.m */,
+				FD3B4C0C23801180009CFF5B /* SSDReference.h */,
+				FD3B4C0D23801180009CFF5B /* SSDReference.m */,
+				FDE511B7237F2D6C00751E40 /* SSDModule.h */,
+				FDE511BA237F2E4A00751E40 /* SSDFile.h */,
+				FDE511BB237F2E4A00751E40 /* SSDFile.m */,
+				FDE511B8237F2D6C00751E40 /* SSDModule.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FDE511EF237F5C9000751E40 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				FDE511D5237F3CDE00751E40 /* SSDLogger.h */,
+				FDE511D8237F3E2F00751E40 /* SSDNSLogLogger.h */,
+				FDE511D9237F3E2F00751E40 /* SSDNSLogLogger.m */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
+		FDE511F0237F5C9F00751E40 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FDE511DB237F464300751E40 /* SSDRegex.h */,
+				FDE511DC237F464300751E40 /* SSDRegex.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FDE511F4237F646C00751E40 /* SourceKit */ = {
+			isa = PBXGroup;
+			children = (
+				FDE511F5237F647800751E40 /* sourcekitd.framework */,
+				FDE511F6237F647800751E40 /* sourcekitd.h */,
+				FDE511F8237F649000751E40 /* SourceKit.h */,
+				FDE511F9237F649000751E40 /* SourceKit.m */,
+				FDE511FB237F66FB00751E40 /* SourceKitUID.h */,
+				FDE511FC237F66FB00751E40 /* SourceKitUID.m */,
+				FDE511FE237F71DB00751E40 /* SourceKitResponse.h */,
+				FDE511FF237F71DB00751E40 /* SourceKitResponse.m */,
+			);
+			path = SourceKit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FDE5118B237F2C1F00751E40 /* SwiftShieldOBJC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDE51193237F2C1F00751E40 /* Build configuration list for PBXNativeTarget "SwiftShieldOBJC" */;
+			buildPhases = (
+				FDE51188237F2C1F00751E40 /* Sources */,
+				FDE51189237F2C1F00751E40 /* Frameworks */,
+				FDE5118A237F2C1F00751E40 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftShieldOBJC;
+			productName = SwiftShieldOBJC;
+			productReference = FDE5118C237F2C1F00751E40 /* SwiftShieldOBJC */;
+			productType = "com.apple.product-type.tool";
+		};
+		FDE511C5237F35F500751E40 /* SwiftShieldTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDE511CB237F35F500751E40 /* Build configuration list for PBXNativeTarget "SwiftShieldTests" */;
+			buildPhases = (
+				FDE511C2237F35F500751E40 /* Sources */,
+				FDE511C3237F35F500751E40 /* Frameworks */,
+				FDE511C4237F35F500751E40 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftShieldTests;
+			productName = SwiftShieldTests;
+			productReference = FDE511C6237F35F500751E40 /* SwiftShieldTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FDE51184237F2C1F00751E40 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1110;
+				ORGANIZATIONNAME = rockbruno;
+				TargetAttributes = {
+					FDE5118B237F2C1F00751E40 = {
+						CreatedOnToolsVersion = 11.1;
+					};
+					FDE511C5237F35F500751E40 = {
+						CreatedOnToolsVersion = 11.1;
+					};
+				};
+			};
+			buildConfigurationList = FDE51187237F2C1F00751E40 /* Build configuration list for PBXProject "SwiftShieldOBJC" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FDE51183237F2C1F00751E40;
+			productRefGroup = FDE5118D237F2C1F00751E40 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FDE5118B237F2C1F00751E40 /* SwiftShieldOBJC */,
+				FDE511C5237F35F500751E40 /* SwiftShieldTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FDE511C4237F35F500751E40 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FDE51188237F2C1F00751E40 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD3B4C2023806601009CFF5B /* SSDSourceKitObfuscator.m in Sources */,
+				FD3B4C0E23801180009CFF5B /* SSDReference.m in Sources */,
+				FDE51200237F71DB00751E40 /* SourceKitResponse.m in Sources */,
+				FDE511B9237F2D6C00751E40 /* SSDModule.m in Sources */,
+				FDE511FA237F649000751E40 /* SourceKit.m in Sources */,
+				FDE51209237F98E600751E40 /* SSDIndexedFile.m in Sources */,
+				FD3B4C3223807ABD009CFF5B /* SSDSwiftShieldInteractor.m in Sources */,
+				FDE511A4237F2C5500751E40 /* SSDXcodeSchemeInformationProvider.m in Sources */,
+				FDE511E5237F4E8C00751E40 /* SSDXcodeOutputParser.m in Sources */,
+				FDE511DA237F3E2F00751E40 /* SSDNSLogLogger.m in Sources */,
+				FD3B4C23238067F5009CFF5B /* SSDSourceKitObfuscatorDataStore.m in Sources */,
+				FDE511BC237F2E4A00751E40 /* SSDFile.m in Sources */,
+				FDE511DD237F464300751E40 /* SSDRegex.m in Sources */,
+				FDE511F3237F5CB300751E40 /* SSDSwiftShieldController.m in Sources */,
+				FDE511FD237F66FB00751E40 /* SourceKitUID.m in Sources */,
+				FDE51190237F2C1F00751E40 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDE511C2237F35F500751E40 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDE511D3237F3C7000751E40 /* SSDXcodeSchemeInformationProvider.m in Sources */,
+				FD3B4C2C23806E66009CFF5B /* SourceKitResponse.m in Sources */,
+				FDE511D2237F3BD000751E40 /* SSDFile.m in Sources */,
+				FDE511E2237F48E800751E40 /* SSDRegex.m in Sources */,
+				FD3B4C2F23806E82009CFF5B /* SSDSwiftShieldController.m in Sources */,
+				FDE511E1237F48E800751E40 /* SSDNSLogLogger.m in Sources */,
+				FDE511E8237F4FC300751E40 /* SSDXcodeOutputParserTests.m in Sources */,
+				FD3B4C1523801C6E009CFF5B /* SSDReference.m in Sources */,
+				FDE511EC237F526000751E40 /* SSDDummyLogger.m in Sources */,
+				FDE511D4237F3C7000751E40 /* SSDModule.m in Sources */,
+				FDE511E0237F489C00751E40 /* SSDRegexTests.m in Sources */,
+				FD3B4C19238047BA009CFF5B /* SSDXcodeSchemeInformationProviderTests.m in Sources */,
+				FD3B4C2723806DA9009CFF5B /* SSDSourceKitObfuscator.m in Sources */,
+				FDE511E9237F4FC600751E40 /* SSDXcodeOutputParser.m in Sources */,
+				FD3B4C2823806DD5009CFF5B /* SSDSourceKitObfuscatorDataStore.m in Sources */,
+				FD3B4C2623806D45009CFF5B /* SSDSourceKitObfuscatorTests.m in Sources */,
+				FD3B4C2B23806E58009CFF5B /* SSDIndexedFile.m in Sources */,
+				FDE511D1237F36AA00751E40 /* SSDFileTests.m in Sources */,
+				FD3B4C2923806E58009CFF5B /* SourceKit.m in Sources */,
+				FD3B4C2A23806E58009CFF5B /* SourceKitUID.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FDE51191237F2C1F00751E40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FDE51192237F2C1F00751E40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FDE51194237F2C1F00751E40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib";
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FDE51195237F2C1F00751E40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib";
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FDE511CC237F35F500751E40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib";
+				INFOPLIST_FILE = SwiftShieldTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+					"$(TOOLCHAIN_DIR)/usr/lib",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.ifood.SwiftShieldTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FDE511CD237F35F500751E40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib";
+				INFOPLIST_FILE = SwiftShieldTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+					"$(TOOLCHAIN_DIR)/usr/lib",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.ifood.SwiftShieldTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FDE51187237F2C1F00751E40 /* Build configuration list for PBXProject "SwiftShieldOBJC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDE51191237F2C1F00751E40 /* Debug */,
+				FDE51192237F2C1F00751E40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FDE51193237F2C1F00751E40 /* Build configuration list for PBXNativeTarget "SwiftShieldOBJC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDE51194237F2C1F00751E40 /* Debug */,
+				FDE51195237F2C1F00751E40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FDE511CB237F35F500751E40 /* Build configuration list for PBXNativeTarget "SwiftShieldTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDE511CC237F35F500751E40 /* Debug */,
+				FDE511CD237F35F500751E40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FDE51184237F2C1F00751E40 /* Project object */;
+}
