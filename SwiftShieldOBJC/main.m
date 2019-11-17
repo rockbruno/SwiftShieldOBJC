@@ -4,8 +4,8 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        NSString* projectFileString = [[NSUserDefaults standardUserDefaults] stringForKey:@"workspace"];
-        NSString* schemeName = [[NSUserDefaults standardUserDefaults] stringForKey:@"scheme"];
+        NSString* projectFileString = @"/Users/bruno.rocha/Desktop/PersonalCodes/SwiftShieldOBJC/SwiftShieldExample/SwiftShieldExample.xcworkspace";//[[NSUserDefaults standardUserDefaults] stringForKey:@"workspace"];
+        NSString* schemeName = @"SwiftShieldExample";[[NSUserDefaults standardUserDefaults] stringForKey:@"scheme"];
 
         SSDSwiftShieldController* runner = [SSDSwiftShieldConfigurator resolveFromProject:projectFileString
                                                                                    scheme:schemeName];

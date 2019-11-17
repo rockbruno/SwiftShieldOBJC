@@ -33,7 +33,7 @@
 
 - (void)registerModuleForObfuscation:(SSDModule*)module {
     [module.sourceFiles enumerateObjectsUsingBlock:^(SSDFile * _Nonnull file, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSString* log = [NSString stringWithFormat:@"Indexing: %@", file.name];
+        NSString* log = [NSString stringWithFormat:@"--- Indexing: %@", file.name];
         [self.logger log:log];
         SSDSourceKitResponse* response = [self.sourceKit sendSynchronousIndexRequestForFile:file
                                                                             compilerArgs:module.compilerArguments];
@@ -80,7 +80,7 @@
                                                               NSUInteger idx,
                                                               BOOL * _Nonnull stop)
     {
-        [self.logger log: [NSString stringWithFormat:@"Obfuscating %@", obj.file.name]];
+        [self.logger log: [NSString stringWithFormat:@"--- Obfuscating %@", obj.file.name]];
         NSMutableArray<SSDReference*>* referenceArray = [NSMutableArray new];
         [obj.response recurseOverUid:[SSDSourceKitUID entitiesId] block:^(SSDSourceKitResponseVariant * _Nonnull variant) {
             SSDSourceKitResponseDictionary* dict = [variant dictionary];

@@ -30,7 +30,7 @@
 }
 
 - (NSArray<SSDModule*>*)getModulesFromProject:(NSError * _Nullable *)error {
-    [self.logger log:@"Building project to retrieve compiler arguments."];
+    [self.logger log:@"--- Building project to retrieve compiler arguments."];
 
     NSString* command = @"/usr/bin/xcodebuild";
     NSArray* arguments = @[@"clean",
