@@ -6,27 +6,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class SSDFile;
 @class SSDModule;
-@class SSDXcodeOutputParser;
+@protocol SSDTaskRunnerProtocol;
 
-@interface SSDSchemeInfoProvider : NSObject <SSDSchemeInfoProviderProtocol>
-
+@interface SSDSchemeInfoProvider: NSObject <SSDSchemeInfoProviderProtocol>
 - (instancetype)initWithProjectFile:(SSDFile*)projectFile
                          schemeName:(NSString* )schemeName
-                  buildOutputParser:(SSDXcodeOutputParser*)outputParser
+                       taskRunner:(id<SSDTaskRunnerProtocol>)taskRunner
                              logger:(id<SSDLoggerProtocol>)logger;
+@end
 
-/// The `NSTask` that represents the xcodebuild operation used for extracting modules.
-- (NSTask*)buildTask;
-
+@interface SSDSchemeInfoProvider (OutputParsing)
 /// Parses raw outputs from Xcode to an array of `SSDModule`s.
 ///
 /// - Parameters:
 ///   - output: The output from Xcode to parse modules from.
-///   - terminationStatus: The status code from the operation that resulted in the said output.
-///   - error: A pointer to an error that is filled when the operation fails.
-- (NSArray<SSDModule*>*_Nonnull)parseModulesFromOutput:(NSString * _Nullable)output
-                                     terminationStatus:(NSInteger)statusCode
-                                                 error:(NSError * _Nullable * _Nullable)error;
+- (NSArray<SSDModule*>*)parseModulesFromOutput:(NSString*)output;
 @end
 
 NS_ASSUME_NONNULL_END

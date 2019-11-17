@@ -18,7 +18,4 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)writeContents:(NSString*)contents error:(NSError * _Nullable *)error;
 @end
 
-@interface SSDFile (NSCopying) <NSCopying>
-@end
-
 NS_ASSUME_NONNULL_END

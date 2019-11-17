@@ -26,6 +26,7 @@
         _sourceKit = sourceKit;
         _logger = logger;
         _dataStore = dataStore;
+        [self.sourceKit start];
     }
     return self;
 }
@@ -242,6 +243,11 @@
         self.dataStore.obfuscatedNames[string] = newString;
         return newString;
     }
+}
+
+- (void)dealloc
+{
+    [self.sourceKit shutdown];
 }
 
 @end

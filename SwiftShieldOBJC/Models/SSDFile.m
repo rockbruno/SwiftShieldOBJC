@@ -40,11 +40,3 @@
 }
 
 @end
-
-@implementation SSDFile (NSCopying)
-
-- (nonnull id)copyWithZone:(nullable NSZone *)zone {
-    return [[SSDFile alloc] initWithPath:self.path];
-}
-
-@end

@@ -64,7 +64,7 @@
 
 - (void)test_moduleRegistration {
     SSDSourceKit* sourceKit = [SSDSourceKit new];
-    [sourceKit start];
+
     SSDSourceKitObfuscatorDataStore* dataStore = [SSDSourceKitObfuscatorDataStore new];
 
     SSDSourceKitObfuscator* obfuscator = [[SSDSourceKitObfuscator alloc] initWithSourceKit:sourceKit
@@ -86,8 +86,6 @@
 
     XCTAssertEqualObjects(dataStore.processedUsrs, expectedSet);
     XCTAssertEqualObjects(dataStore.indexedFiles.firstObject.file, mockFile);
-
-    [sourceKit shutdown];
 }
 
 - (void)test_removeParameterInformationFromString {
@@ -106,7 +104,6 @@
 - (void)test_obfuscation_sendsCorrectObfuscatedContentToDelegate {
 
     SSDSourceKit* sourceKit = [SSDSourceKit new];
-    [sourceKit start];
     SSDSourceKitObfuscatorDataStore* dataStore = [SSDSourceKitObfuscatorDataStore new];
 
     SSDSourceKitObfuscator* obfuscator = [[SSDSourceKitObfuscator alloc] initWithSourceKit:sourceKit
@@ -132,14 +129,11 @@
     [obfuscator obfuscate];
 
     XCTAssertEqualObjects(delegateSpy.receivedNewContent, @"class OBSFoo { func OBSBar() {} }");
-
-    [sourceKit shutdown];
 }
 
 - (void)test_obfuscation_ignoresInternalCode {
 
     SSDSourceKit* sourceKit = [SSDSourceKit new];
-    [sourceKit start];
     SSDSourceKitObfuscatorDataStore* dataStore = [SSDSourceKitObfuscatorDataStore new];
 
     SSDSourceKitObfuscator* obfuscator = [[SSDSourceKitObfuscator alloc] initWithSourceKit:sourceKit
@@ -164,8 +158,6 @@
     [obfuscator obfuscate];
 
     XCTAssertEqualObjects(delegateSpy.receivedNewContent, @"import UIKit; class OBSFoo: UIViewController { func viewDidLoad() {} }");
-
-    [sourceKit shutdown];
 }
 
 - (void)test_obfuscatedString_cachesSimilarStrings {
