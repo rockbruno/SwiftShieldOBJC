@@ -1,5 +1,7 @@
 #import "SSDNSLogLogger.h"
 
+#define NSLog(FORMAT, ...) fprintf(stderr, "%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+
 @implementation SSDNSLogLogger
 - (void)log:(NSString *)message {
     NSLog(@"%@", message);
