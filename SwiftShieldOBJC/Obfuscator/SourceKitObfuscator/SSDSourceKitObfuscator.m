@@ -63,7 +63,7 @@
 
     NSString* name = [self removeParameterInformationFromString:rawName];
 
-    [self.logger log:[NSString stringWithFormat:@"Found declaration of %@ (USR: %@)", name, usr]];
+    [self.logger log:[NSString stringWithFormat:@"* Found declaration of %@ (USR: %@)", name, usr]];
     [self.dataStore.processedUsrs addObject:usr];
 
     if (![dict getString:[SSDSourceKitUID receiverId]]) {
@@ -108,7 +108,7 @@
             NSString* name = [self removeParameterInformationFromString:rawName];
             NSString* obfuscatedName = [self obfuscatedStringForString:name];
 
-            NSString* format = @"Found reference of %@ (USR: %@) at %@ (%ld:%ld) -> now %@";
+            NSString* format = @"* Found reference of %@ (USR: %@) at %@ (%ld:%ld) -> now %@";
             [self.logger log:[NSString stringWithFormat:format, name, usr, obj.file.name, (long)line, (long)column, obfuscatedName]];
 
             SSDReference* reference = [[SSDReference alloc] initWithName:name line:line column:column];

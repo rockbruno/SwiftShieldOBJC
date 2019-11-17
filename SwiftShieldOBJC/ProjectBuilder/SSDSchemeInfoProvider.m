@@ -72,7 +72,7 @@
             SSDModule* extractedModule = [self parseMergeSwiftModulePhaseLine:obj
                                                                     moduleName:moduleName];
             [modules addObject:extractedModule];
-            [self.logger log:[NSString stringWithFormat:@"Found module: %@", moduleName]];
+            [self.logger log:[NSString stringWithFormat:@"* Found module: %@", moduleName]];
         }
     }];
     return modules;
