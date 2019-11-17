@@ -1,11 +1,11 @@
 #import <Foundation/Foundation.h>
-#import "SSDLoggerProtocol.h"
-#import "SSDSwiftShieldInteractor.h"
+#import "SSDSwiftShieldInteractorDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class SSDSwiftShieldInteractor;
 @protocol SSDSwiftShieldInteractorProtocol;
+@protocol SSDLoggerProtocol;
 
 /// A controller that coordinates obfuscation processes.
 @interface SSDSwiftShieldController : NSObject

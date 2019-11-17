@@ -1,18 +1,18 @@
 #import <Foundation/Foundation.h>
-#import "SSDXcodeSchemeInformationProvider.h"
+#import "SSDSchemeInfoProvider.h"
 #import "SSDModule.h"
 #import "SSDFile.h"
 #import "SSDRegex.h"
 #import "SSDXcodeOutputParser.h"
 
-@interface SSDXcodeSchemeInformationProvider ()
+@interface SSDSchemeInfoProvider ()
 @property (nonatomic) SSDFile* projectFile;
 @property (nonatomic) NSString* schemeName;
 @property (nonatomic) SSDXcodeOutputParser* outputParser;
 @property (nonatomic) id<SSDLoggerProtocol> logger;
 @end
 
-@implementation SSDXcodeSchemeInformationProvider
+@implementation SSDSchemeInfoProvider
 
 - (instancetype)initWithProjectFile:(SSDFile*)projectFile
                          schemeName:(NSString* )schemeName

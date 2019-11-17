@@ -86,6 +86,8 @@
 
     XCTAssertEqualObjects(dataStore.processedUsrs, expectedSet);
     XCTAssertEqualObjects(dataStore.indexedFiles.firstObject.file, mockFile);
+
+    [sourceKit shutdown];
 }
 
 - (void)test_removeParameterInformationFromString {
@@ -130,6 +132,8 @@
     [obfuscator obfuscate];
 
     XCTAssertEqualObjects(delegateSpy.receivedNewContent, @"class OBSFoo { func OBSBar() {} }");
+
+    [sourceKit shutdown];
 }
 
 - (void)test_obfuscation_ignoresInternalCode {
@@ -160,6 +164,8 @@
     [obfuscator obfuscate];
 
     XCTAssertEqualObjects(delegateSpy.receivedNewContent, @"import UIKit; class OBSFoo: UIViewController { func viewDidLoad() {} }");
+
+    [sourceKit shutdown];
 }
 
 - (void)test_obfuscatedString_cachesSimilarStrings {

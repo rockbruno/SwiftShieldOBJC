@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "SSDLoggerProtocol.h"
+#import "SSDSchemeInfoProviderProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -7,19 +8,12 @@ NS_ASSUME_NONNULL_BEGIN
 @class SSDModule;
 @class SSDXcodeOutputParser;
 
-/// A worker that extracts information from a Xcode project, relevant to a specific scheme.
-@interface SSDXcodeSchemeInformationProvider : NSObject
+@interface SSDSchemeInfoProvider : NSObject <SSDSchemeInfoProviderProtocol>
 
 - (instancetype)initWithProjectFile:(SSDFile*)projectFile
                          schemeName:(NSString* )schemeName
                   buildOutputParser:(SSDXcodeOutputParser*)outputParser
                              logger:(id<SSDLoggerProtocol>)logger;
-
-/// Retrieves .pbxproj targets from the relevant Xcode project by building it.
-///
-/// - Parameters:
-///   - error: A pointer to an error that is filled when the operation fails.
-- (NSArray<SSDModule*>*)getModulesFromProject:(NSError * _Nullable *)error;
 
 /// The `NSTask` that represents the xcodebuild operation used for extracting modules.
 - (NSTask*)buildTask;

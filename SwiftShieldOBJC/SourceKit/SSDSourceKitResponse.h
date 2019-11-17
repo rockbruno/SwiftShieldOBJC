@@ -19,7 +19,6 @@ typedef void(^ResponseRecursion)(SSDSourceKitResponseVariant*);
 @interface SSDSourceKitResponseVariant : NSObject
 - (SSDSourceKitResponseDictionary*)dictionary;
 - (void)recurseOverUid:(SSDSourceKitUID *)uid block:(ResponseRecursion)block;
-- (BOOL)isEqualTo:(SSDSourceKitResponseVariant*)otherVariant;
 @end
 
 ////////////////////////////////////////////////////////

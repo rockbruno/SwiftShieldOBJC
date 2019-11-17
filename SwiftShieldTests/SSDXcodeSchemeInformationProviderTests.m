@@ -3,25 +3,25 @@
 #import "SSDDummyLogger.h"
 #import "SSDModule.h"
 #import "SSDFile.h"
-#import "SSDXcodeSchemeInformationProvider.h"
+#import "SSDSchemeInfoProvider.h"
 
-@interface SSDXcodeSchemeInformationProviderTests: XCTestCase
+@interface SSDSchemeInfoProviderTests: XCTestCase
 @end
 
-@implementation SSDXcodeSchemeInformationProviderTests
+@implementation SSDSchemeInfoProviderTests
 
-- (SSDXcodeSchemeInformationProvider*)infoDouble {
+- (SSDSchemeInfoProvider*)infoDouble {
     SSDDummyLogger* logger = [SSDDummyLogger new];
     SSDXcodeOutputParser* parser = [[SSDXcodeOutputParser alloc] initWithLogger:logger];
     SSDFile* dummyFile = [[SSDFile alloc] initWithPath:@"./text.xcworkspace"];
-    return  [[SSDXcodeSchemeInformationProvider alloc] initWithProjectFile:dummyFile
+    return  [[SSDSchemeInfoProvider alloc] initWithProjectFile:dummyFile
                                                                 schemeName:@"MyScheme"
                                                          buildOutputParser:parser
                                                                     logger:logger];
 }
 
 - (void)test_buildTask_parameters {
-    SSDXcodeSchemeInformationProvider* info = [self infoDouble];
+    SSDSchemeInfoProvider* info = [self infoDouble];
     NSTask* buildTask = [info buildTask];
 
     NSArray* expectedArgs = @[@"clean",
@@ -36,7 +36,7 @@
 }
 
 - (void)test_onNilOutput_errorIsThrown {
-    SSDXcodeSchemeInformationProvider* info = [self infoDouble];
+    SSDSchemeInfoProvider* info = [self infoDouble];
 
     NSError* error;
     NSString* nullStr;
@@ -47,7 +47,7 @@
 }
 
 - (void)test_onNonZeroStatusCode_errorIsThrown {
-    SSDXcodeSchemeInformationProvider* info = [self infoDouble];
+    SSDSchemeInfoProvider* info = [self infoDouble];
 
     NSError* error;
     NSString* output = @"Output";
@@ -58,7 +58,7 @@
 }
 
 - (void)test_onValidStatusCodeAndOutput_noErrorIsThrown {
-    SSDXcodeSchemeInformationProvider* info = [self infoDouble];
+    SSDSchemeInfoProvider* info = [self infoDouble];
 
     NSError* error;
     NSString* output = @"Output";

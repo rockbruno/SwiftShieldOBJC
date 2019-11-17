@@ -1,7 +1,7 @@
 #import "SSDSwiftShieldController.h"
 #import "SSDFile.h"
 #import "SSDModule.h"
-#import "SSDSwiftShieldInteractor.h"
+#import "SSDSwiftShieldInteractorProtocol.h"
 #import "SSDLoggerProtocol.h"
 
 @interface SSDSwiftShieldController ()

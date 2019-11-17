@@ -11,6 +11,7 @@ typedef NS_ENUM(NSUInteger, SSDSourceKitDeclarationType) {
     SSDSourceKitDeclarationTypeProperty
 };
 
+/// Abstraction of a `sourcekitd_uid_t`
 @interface SSDSourceKitUID : NSObject
 @property (nonatomic) sourcekitd_uid_t uid;
 

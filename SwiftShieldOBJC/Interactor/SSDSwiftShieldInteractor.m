@@ -1,11 +1,9 @@
 #import "SSDSwiftShieldInteractor.h"
-#import "SSDXcodeSchemeInformationProvider.h"
-
-@interface SSDSwiftShieldInteractor (ObfuscatorDelegate) <SSDObfuscatorDelegate>
-@end
+#import "SSDSwiftShieldInteractorDelegate.h"
+#import "SSDSchemeInfoProviderProtocol.h"
 
 @interface SSDSwiftShieldInteractor ()
-@property (nonatomic) SSDXcodeSchemeInformationProvider* schemeInformationProvider;
+@property (nonatomic) id<SSDSchemeInfoProviderProtocol> schemeInfoProvider;
 @property (nonatomic) id<SSDLoggerProtocol> logger;
 @property (nonatomic) id<SSDObfuscatorProtocol> obfuscator;
 @end
@@ -14,12 +12,12 @@
 
 @synthesize delegate;
 
-- (instancetype)initWithSchemeInformationProvider:(SSDXcodeSchemeInformationProvider*)schemeInformationProvider
-                                           logger:(id<SSDLoggerProtocol>)logger
-                                       obfuscator:(id<SSDObfuscatorProtocol>)obfuscator {
+- (instancetype)initWithSchemeInfoProvider:(id<SSDSchemeInfoProviderProtocol>)schemeInfoProvider
+                                    logger:(id<SSDLoggerProtocol>)logger
+                                obfuscator:(id<SSDObfuscatorProtocol>)obfuscator {
     self = [super init];
     if (self) {
-        _schemeInformationProvider = schemeInformationProvider;
+        _schemeInfoProvider = schemeInfoProvider;
         _logger = logger;
         _obfuscator = obfuscator;
         self.obfuscator.delegate = self;
@@ -29,7 +27,7 @@
 
 - (void)getModulesFromProject {
     NSError* error;
-    NSArray<SSDModule*>* modules = [[self schemeInformationProvider] getModulesFromProject:&error];
+    NSArray<SSDModule*>* modules = [[self schemeInfoProvider] getModulesFromProject:&error];
     if (!self.delegate) {
         return;
     }
